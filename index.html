@@ -1,29 +1,49 @@
 <!doctype html>
 <html lang="pt-BR">
   <head>
+    <!-- Configurações Básicas -->
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>BiositesAi — Cartão de Visitas Digital Infinito NFC + QR Code</title>
-    <meta
-      name="description"
-      content="Com o BiositesAi NFC e QR Code você se conecta com estilo, tecnologia e praticidade. Compartilhe contatos, localização, redes sociais e muito mais com um simples toque."
-    />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="theme-color" content="#0a0a0a" />
+
+    <!-- SEO Principal: Título e Descrição focados em Biosite com IA + Cartão NFC -->
+    <title>BiositesAi | Biosite com IA, Agente de Vendas 24h e Cartão Digital NFC</title>
+    <meta name="description" content="Crie seu Biosite profissional com Agente de IA (LIA) que atende, qualifica clientes e vende 24h por dia. Integrado ao cartão de visitas digital infinito NFC e QR Code." />
+    <meta name="keywords" content="biosite com ia, biosite inteligência artificial, biositesia, biositesai, mini site com agente de ia, link na bio com ia, cartão de visitas digital nfc, cartão digital interativo, atendente virtual para bio, conectacard" />
     <meta name="author" content="BiositesAi" />
-    <meta
-      name="keywords"
-      content="cartão de visitas digital, cartão digital nfc, biositesai, qr code, networking digital, cartão digital infinito"
-    />
-    <meta property="og:title" content="BiositesAi — Cartão de Visitas Digital Infinito NFC + QR Code" />
-    <meta
-      property="og:description"
-      content="Com o BiositesAi NFC e QR Code você se conecta com estilo, tecnologia e praticidade. Compartilhe contatos, localização, redes sociais e muito mais com um simples toque."
-    />
+    <meta name="application-name" content="BiositesAi" />
+
+    <!-- Diretivas de Indexação para o Google -->
+    <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
+    <meta name="googlebot" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
+
+    <!-- URL Canônica (Domínio Oficial) -->
+    <link rel="canonical" href="https://www.biositesia.com.br/" />
+    <link rel="alternate" hreflang="pt-BR" href="https://www.biositesia.com.br/" />
+    <link rel="alternate" hreflang="x-default" href="https://www.biositesia.com.br/" />
+
+    <!-- Open Graph / WhatsApp / Facebook / LinkedIn / Instagram -->
     <meta property="og:type" content="website" />
-    <meta property="og:image" content="/assets/og-image.png" />
+    <meta property="og:site_name" content="BiositesAi" />
+    <meta property="og:locale" content="pt_BR" />
+    <meta property="og:url" content="https://www.biositesia.com.br/" />
+    <meta property="og:title" content="BiositesAi – Seu Biosite com Agente de IA vendendo 24h por dia" />
+    <meta property="og:description" content="Muito mais que um link na bio: mini site profissional com a LIA, sua agente de IA que tira dúvidas e converte visitantes em vendas, integrado ao Cartão Físico NFC + QR Code." />
+    <meta property="og:image" content="https://www.biositesia.com.br/assets/og-image.png" />
+    <meta property="og:image:secure_url" content="https://www.biositesia.com.br/assets/og-image.png" />
+    <meta property="og:image:type" content="image/png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="BiositesAi - Mini Site Inteligente com Agente de IA LIA e Cartão NFC" />
+
+    <!-- Twitter / X Cards -->
     <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content="BiositesAi — Cartão de Visitas Digital Infinito NFC + QR Code" />
-    <meta name="twitter:description" content="NFC + QR Code. Compartilhe seus contatos, localização, redes sociais e muito mais com um simples toque." />
-    <meta name="twitter:image" content="/assets/og-image.png" />
+    <meta name="twitter:title" content="BiositesAi | Biosite com IA + Cartão de Visitas Digital NFC" />
+    <meta name="twitter:description" content="Transforme visitantes em clientes 24h por dia com um mini site profissional, Agente de IA integrada (LIA) e cartão por aproximação NFC." />
+    <meta name="twitter:image" content="https://www.biositesia.com.br/assets/og-image.png" />
+
+    <!-- Favicon e Fontes Mantidos Intactos -->
     <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%23ff6600'%3E%3Cpath d='M20 4H4c-1.11 0-1.99.89-1.99 2L2 18c0 1.11.89 2 2 2h16c1.11 0 2-.89 2-2V6c0-1.11-.89-2-2-2zm0 14H4v-6h16v6zm0-10H4V6h16v2z'/%3E%3C/svg%3E" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -31,23 +51,95 @@
       href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap"
       rel="stylesheet"
     />
+
+    <!-- Dados Estruturados Schema.org (JSON-LD) para Rich Snippets no Google -->
     <script type="application/ld+json">
-      {
-        "@context": "https://schema.org",
-        "@type": "Product",
-        "name": "BiositesAi - Cartão de Visitas Digital Infinito NFC + QR Code",
-        "description": "Cartão de visitas digital com tecnologia NFC e QR Code. Mini site profissional com todos os seus contatos, redes sociais e localização em um único toque.",
-        "brand": {
-          "@type": "Brand",
-          "name": "BiositesAi"
-        },
-        "offers": {
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Organization",
+      "@id": "https://www.biositesia.com.br/#organization",
+      "name": "BiositesAi",
+      "alternateName": "BiositesIA",
+      "url": "https://www.biositesia.com.br/",
+      "logo": "https://www.biositesia.com.br/assets/og-image.png",
+      "description": "Plataforma de Biosites inteligentes com Agente de IA (LIA) para atendimento 24h e cartões de visita digitais com tecnologia NFC e QR Code."
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://www.biositesia.com.br/#website",
+      "url": "https://www.biositesia.com.br/",
+      "name": "BiositesAi",
+      "alternateName": "BiositesIA",
+      "publisher": {
+        "@id": "https://www.biositesia.com.br/#organization"
+      },
+      "inLanguage": "pt-BR"
+    },
+    {
+      "@type": "Product",
+      "@id": "https://www.biositesia.com.br/#product",
+      "name": "BiositesAi – Mini Site Profissional com Agente de IA (LIA) + Cartão NFC",
+      "image": "https://www.biositesia.com.br/assets/og-image.png",
+      "description": "Mini site responsivo com catálogo de serviços, links e Agente de Inteligência Artificial (LIA) que responde dúvidas e qualifica clientes 24h por dia, acompanhado de cartão físico NFC e QR Code.",
+      "brand": {
+        "@type": "Brand",
+        "name": "BiositesAi"
+      },
+      "offers": [
+        {
           "@type": "Offer",
-          "price": "197.00",
+          "name": "Plano com Agente de IA (LIA)",
           "priceCurrency": "BRL",
-          "availability": "https://schema.org/InStock"
+          "price": "147.00",
+          "availability": "https://schema.org/InStock",
+          "url": "https://www.biositesia.com.br/#planos",
+          "description": "Inclui LIA Agente de IA 24h, Mini site profissional completo, Cartão Físico NFC + QR Code e frete grátis (manutenção da IA: R$ 49,90/mês)."
+        },
+        {
+          "@type": "Offer",
+          "name": "Plano Tradicional (Sem IA)",
+          "priceCurrency": "BRL",
+          "price": "99.90",
+          "availability": "https://schema.org/InStock",
+          "url": "https://www.biositesia.com.br/#planos",
+          "description": "Pagamento único sem mensalidades. Inclui Mini site profissional completo, Cartão Físico NFC + QR Code e frete grátis."
         }
-      }
+      ]
+    },
+    {
+      "@type": "FAQPage",
+      "@id": "https://www.biositesia.com.br/#faq",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "O que é o BiositesAi com Agente de IA?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "O BiositesAi combina um mini site profissional (biosite) com a LIA, uma agente de inteligência artificial que atende visitantes 24 horas por dia, tira dúvidas sobre seus serviços e direciona leads qualificados para o seu WhatsApp, além de incluir o cartão físico com aproximação NFC e QR Code."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Preciso pagar mensalidade para usar o BiositesAi?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "No Plano Tradicional (sem IA), o pagamento é único de R$ 99,90 sem mensalidades. No Plano com Agente de IA (LIA), o valor de ativação é de R$ 147,00 com manutenção mensal de R$ 49,90 para manter a assistente de inteligência artificial ativa 24h por dia."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "O cartão NFC funciona em qualquer celular?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Sim. Nos smartphones compatíveis com tecnologia NFC (iOS e Android), basta aproximar o cartão. Para aparelhos sem NFC, o verso do cartão conta com um QR Code dinâmico que abre o seu Biosite instantaneamente pela câmera."
+          }
+        }
+      ]
+    }
+  ]
+}
     </script>
   </head>
   <body class="bg-[#080808] text-[#f7f7f7] antialiased selection:bg-[#ff6600]/30 selection:text-white">
@@ -55,4 +147,3 @@
     <script type="module" src="/src/main.tsx"></script>
   </body>
 </html>
-
