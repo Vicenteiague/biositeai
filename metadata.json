@@ -1,0 +1,6 @@
+{
+  "name": "ConectaCard — Cartão de Visitas Digital Infinito NFC + QR Code",
+  "description": "Com o ConectaCard NFC e QR Code você se conecta com estilo, tecnologia e praticidade. Compartilhe contatos, localização, redes sociais e muito mais com um simples toque.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
