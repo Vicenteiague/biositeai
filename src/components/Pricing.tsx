@@ -4,7 +4,7 @@ export default function Pricing() {
   const planAI = {
     title: 'COM AGENTE DE IA LIA',
     badge: 'Mais Recomendado',
-    price: '147',
+    price: '397',
     cents: ',00',
     sub: '+ Apenas R$49,90 manutenção IA',
     description: 'Mini site profissional + Cartão NFC + Agente LIA atendendo e vendendo 24h',
@@ -20,15 +20,15 @@ export default function Pricing() {
       { text: 'Compatível com iPhone e Android' },
     ],
     whatsappMsg:
-      'https://wa.me/5567993174612?text=Quero%20meu%20BiositesAi%20com%20Agente%20de%20IA%20LIA%20(R$147,00%20+%20R$49,90)',
+      'https://wa.me/5567993174612?text=Quero%20meu%20BiositesAi%20com%20Agente%20de%20IA%20LIA%20(R$397,00%20+%20R$49,90)',
     ctaText: 'QUERO COM AGENTE DE IA',
   };
 
   const planStandard = {
     title: 'TRADICIONAL (SEM IA)',
     badge: 'Sem Mensalidade',
-    price: '99',
-    cents: ',90',
+    price: '297',
+    cents: ',00',
     sub: 'Pagamento único · Sem mensalidades',
     description: 'Cartão de visitas digital infinito NFC + QR Code + Mini site profissional',
     features: [
@@ -43,7 +43,7 @@ export default function Pricing() {
       { text: 'Compatível com iPhone e Android' },
     ],
     whatsappMsg:
-      'https://wa.me/5567993174612?text=Quero%20meu%20BiositesAi%20Tradicional%20(R$99,90)',
+      'https://wa.me/5567993174612?text=Quero%20meu%20BiositesAi%20Tradicional%20(R$297,00)',
     ctaText: 'QUERO MEU BIOSITESAI',
   };
 
