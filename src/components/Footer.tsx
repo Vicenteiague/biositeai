@@ -9,8 +9,12 @@ export default function Footer() {
         <div className="grid md:grid-cols-3 gap-10 mb-12">
           {/* Brand Col */}
           <div>
-            <h3 className="font-display text-2xl font-bold mb-4 flex items-center gap-2">
-              <span className="inline-block w-2.5 h-2.5 rounded-full bg-[#ff6600]" />
+            <h3 className="font-display text-2xl font-bold mb-4 flex items-center gap-2.5">
+              <img
+                src="/assets/biositesai-logo.png"
+                alt="BiositesAi"
+                className="w-8 h-8 rounded-full object-cover shadow-[0_0_12px_rgba(255,106,0,0.4)] border border-[#ff6600]/40"
+              />
               <span>Biosites</span>
               <span className="text-gold-gradient">Ai</span>
             </h3>

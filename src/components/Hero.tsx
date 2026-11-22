@@ -36,16 +36,21 @@ export default function Hero({ onOpenTestModal }: HeroProps) {
         <div className="grid lg:grid-cols-[1.12fr_0.88fr] gap-10 lg:gap-12 items-center">
           {/* Left Column: Message & CRO Conversion */}
           <div className="flex flex-col items-start text-left pr-0 lg:pr-2">
-            {/* Top Brand Tagline Lockup */}
-            <div className="flex items-center gap-2 mb-4">
-              <div className="w-7 h-7 rounded-lg bg-gradient-to-br from-[#FF8A00] to-[#FF6A00] flex items-center justify-center shadow-[0_0_15px_rgba(255,106,0,0.4)]">
-                <svg className="w-4 h-4 fill-black" viewBox="0 0 24 24">
-                  <path d="M12 2L2 22h6l4-8 4 8h6L12 2zm0 6l2.5 5h-5L12 8z" />
-                </svg>
+            {/* Top Brand Tagline Lockup with Official Company Logo */}
+            <div className="flex items-center gap-3.5 mb-5">
+              <img
+                src="/assets/biositesai-logo.png"
+                alt="Logo Oficial BiositesAi - LIA Biosites com IA"
+                className="w-12 h-12 sm:w-14 sm:h-14 rounded-full object-cover shadow-[0_0_20px_rgba(255,106,0,0.45)] border border-[#FF6A00]/50 shrink-0"
+              />
+              <div className="flex flex-col justify-center">
+                <span className="font-display text-xl sm:text-2xl font-bold tracking-tight text-white leading-none">
+                  BIOSITES<span className="text-[#FF6A00]">AI</span>
+                </span>
+                <span className="text-[10px] text-[#A1A1AA] uppercase tracking-[0.2em] font-semibold mt-1">
+                  Sua marca, sem limites
+                </span>
               </div>
-              <span className="font-display text-lg sm:text-xl font-bold tracking-tight text-white">
-                BIOSITES<span className="text-[#FF6A00]">AI</span>
-              </span>
             </div>
 
             {/* Visual Badge / Kicker */}

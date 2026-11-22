@@ -50,9 +50,13 @@ export default function Navbar({ onOpenTestModal }: NavbarProps) {
         {/* Brand Zone */}
         <a
           href="/"
-          className="font-display text-lg sm:text-xl font-bold text-foreground shrink-0 flex items-center gap-2 hover:opacity-90 transition-opacity"
+          className="font-display text-lg sm:text-xl font-bold text-foreground shrink-0 flex items-center gap-2.5 hover:opacity-90 transition-opacity"
         >
-          <span className="inline-block w-2.5 h-2.5 rounded-full bg-[#ff6600] shadow-[0_0_8px_#ff6600]" />
+          <img
+            src="/assets/biositesai-logo.png"
+            alt="BiositesAi"
+            className="w-8 h-8 rounded-full object-cover shadow-[0_0_12px_rgba(255,106,0,0.5)] border border-[#ff6600]/40"
+          />
           <span>Biosites</span>
           <span className="text-gold-gradient">Ai</span>
         </a>
