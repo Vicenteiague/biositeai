@@ -5,7 +5,7 @@ export const WHATSAPP_DIRECT_URL =
   'https://api.whatsapp.com/send?phone=5567993174612';
 
 export const BIOSITE_TEST_URL =
-  'https://vicenteiaguebiositegoogleia.vercel.app/';
+  'https://biositesaisuperlimpoai.netlify.app/';
 
 export interface Testimonial {
   name: string;
