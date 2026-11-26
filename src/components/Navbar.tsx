@@ -1,31 +1,13 @@
-import { useState, useEffect } from 'react';
-import { Sun, Moon, ArrowRight, Menu, X } from 'lucide-react';
+import { useState } from 'react';
+import { ArrowRight, Menu, X } from 'lucide-react';
 import { WHATSAPP_ORDER_URL, BIOSITE_TEST_URL } from '../types';
 
 interface NavbarProps {
   onOpenTestModal: () => void;
 }
 
-export default function Navbar({ onOpenTestModal }: NavbarProps) {
-  const [isDark, setIsDark] = useState(true);
+export default function Navbar({ onOpenTestModal: _onOpenTestModal }: NavbarProps) {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-
-  useEffect(() => {
-    const savedTheme = localStorage.getItem('theme');
-    const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-    const shouldBeDark = savedTheme ? savedTheme === 'dark' : prefersDark || true;
-    setIsDark(shouldBeDark);
-    document.documentElement.classList.toggle('light', !shouldBeDark);
-    document.documentElement.classList.toggle('dark', shouldBeDark);
-  }, []);
-
-  const toggleTheme = () => {
-    const nextDark = !isDark;
-    setIsDark(nextDark);
-    document.documentElement.classList.toggle('light', !nextDark);
-    document.documentElement.classList.toggle('dark', nextDark);
-    localStorage.setItem('theme', nextDark ? 'dark' : 'light');
-  };
 
   const navLinks = [
     { label: 'Como Funciona', href: '#como-funciona' },
@@ -45,93 +27,79 @@ export default function Navbar({ onOpenTestModal }: NavbarProps) {
   };
 
   return (
-    <header className="sticky top-0 z-40 backdrop-blur-xl bg-[#080808]/80 border-b border-[#ff6600]/20 transition-colors">
-      <div className="container mx-auto max-w-6xl px-4 h-16 flex items-center justify-between gap-8">
+    <header className="sticky top-0 z-40 backdrop-blur-md bg-[#070606]/75 border-b border-[rgba(255,138,0,0.12)]">
+      <div className="container mx-auto max-w-6xl px-4 sm:px-6 h-14 sm:h-16 flex items-center justify-between gap-6">
         {/* Brand Zone */}
         <a
           href="/"
-          className="font-display text-lg sm:text-xl font-bold text-foreground shrink-0 flex items-center gap-2.5 hover:opacity-90 transition-opacity"
+          className="font-display text-lg sm:text-xl font-bold tracking-tight text-[#F5F5F4] shrink-0 flex items-center gap-2.5 hover:opacity-90 transition-opacity"
         >
           <img
             src="/assets/biositesai-logo.png"
-            alt="BiositesAi"
-            className="w-8 h-8 rounded-full object-cover shadow-[0_0_12px_rgba(255,106,0,0.5)] border border-[#ff6600]/40"
+            alt="BiositesAI"
+            className="w-8 h-8 rounded-full object-cover border border-[rgba(255,138,0,0.35)] shadow-[0_0_16px_rgba(249,115,22,0.28)]"
           />
-          <span>Biosites</span>
-          <span className="text-gold-gradient">Ai</span>
+          <span>
+            Biosites<span className="text-[#F97316]">AI</span>
+          </span>
         </a>
 
-        {/* Nav Links */}
-        <nav className="hidden md:flex items-center gap-6 text-sm font-medium text-foreground/75">
+        {/* Desktop Nav Links */}
+        <nav className="hidden md:flex items-center gap-7 text-sm font-medium text-[#A1A1AA]">
           {navLinks.map((link) => (
             <button
               key={link.href}
               onClick={() => handleScroll(link.href)}
-              className="hover:text-[#ff6600] transition-colors whitespace-nowrap cursor-pointer py-1"
+              className="hover:text-[#F5F5F4] transition-colors whitespace-nowrap cursor-pointer py-1"
             >
               {link.label}
             </button>
           ))}
-          <a
-            href={BIOSITE_TEST_URL}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="text-xs uppercase tracking-wider font-semibold text-[#FF6A00] hover:text-[#FF8A00] px-3 py-1 rounded-full border border-[#FF6A00]/40 hover:border-[#FF6A00] bg-[#FF6A00]/10 transition-all cursor-pointer"
-          >
-            Testar Modelo
-          </a>
         </nav>
 
         {/* Action Zone */}
         <div className="flex items-center gap-3 shrink-0">
-          <button
-            onClick={toggleTheme}
-            aria-label={isDark ? 'Ativar modo claro' : 'Ativar modo escuro'}
-            className="w-9 h-9 rounded-full border border-white/10 hover:border-[#ff6600]/50 bg-white/5 hover:bg-white/10 flex items-center justify-center text-foreground/80 hover:text-[#ff6600] transition-all cursor-pointer"
-          >
-            {isDark ? <Sun className="w-4 h-4 text-amber-400" /> : <Moon className="w-4 h-4 text-slate-700" />}
-          </button>
-
           <a
             href={WHATSAPP_ORDER_URL}
             target="_blank"
             rel="noopener noreferrer"
-            className="hidden sm:inline-flex items-center gap-2 px-4 py-2 text-xs md:text-sm font-bold text-black bg-[#ff6600] hover:bg-[#ff771a] rounded-full transition-all shadow-[0_0_20px_rgba(255,102,0,0.35)] hover:shadow-[0_0_25px_rgba(255,102,0,0.55)] whitespace-nowrap"
+            className="hidden md:inline-flex items-center gap-2 px-4 py-2 text-xs font-semibold text-[#070606] bg-[#F97316] hover:bg-[#FF8A00] rounded-xl transition-all duration-200 shadow-[0_0_24px_rgba(249,115,22,0.25)] hover:shadow-[0_0_28px_rgba(249,115,22,0.45)] active:scale-[0.98] whitespace-nowrap cta-shimmer-btn"
           >
             <span>Pedir Cartão</span>
-            <ArrowRight className="w-3.5 h-3.5" />
+            <ArrowRight className="w-3.5 h-3.5 stroke-[2.25]" />
           </a>
 
-          {/* Mobile hamburger */}
+          {/* Mobile Hamburger Only */}
           <button
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-            className="md:hidden w-9 h-9 rounded-lg border border-white/10 flex items-center justify-center text-foreground cursor-pointer"
-            aria-label="Abrir menu"
+            className="md:hidden w-9 h-9 rounded-xl border border-[rgba(255,138,0,0.18)] bg-[#110F0E]/90 flex items-center justify-center text-[#F5F5F4] hover:border-[rgba(255,138,0,0.4)] transition-colors cursor-pointer"
+            aria-label={mobileMenuOpen ? 'Fechar menu' : 'Abrir menu'}
+            aria-expanded={mobileMenuOpen}
           >
-            {mobileMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
+            {mobileMenuOpen ? <X className="w-4 h-4" /> : <Menu className="w-4 h-4" />}
           </button>
         </div>
       </div>
 
       {/* Mobile Drawer */}
       {mobileMenuOpen && (
-        <div className="md:hidden border-b border-[#ff6600]/20 bg-[#0c0c0c]/95 backdrop-blur-2xl px-6 py-5 flex flex-col gap-4 animate-in fade-in slide-in-from-top-2">
+        <div className="md:hidden border-b border-[rgba(255,138,0,0.16)] bg-[#070606]/95 backdrop-blur-xl px-5 py-5 flex flex-col gap-2">
           {navLinks.map((link) => (
             <button
               key={link.href}
               onClick={() => handleScroll(link.href)}
-              className="text-left text-sm font-medium text-foreground/90 hover:text-[#ff6600] transition-colors py-2 border-b border-white/5"
+              className="text-left text-sm font-medium text-[#F5F5F4]/90 hover:text-[#F97316] transition-colors py-2.5 border-b border-white/[0.06] cursor-pointer"
             >
               {link.label}
             </button>
           ))}
-          <div className="pt-2 flex flex-col gap-3">
+          <div className="pt-4 flex flex-col gap-2.5">
             <a
               href={BIOSITE_TEST_URL}
               target="_blank"
               rel="noopener noreferrer"
               onClick={() => setMobileMenuOpen(false)}
-              className="w-full py-2.5 rounded-full border border-[#ff6600]/50 text-[#ff6600] text-sm font-semibold text-center hover:bg-[#ff6600]/10 transition-colors"
+              className="w-full py-3 rounded-xl border border-[rgba(255,138,0,0.35)] bg-[#110F0E] text-[#F97316] text-sm font-semibold text-center hover:bg-[#F97316]/10 transition-colors"
             >
               Testar Modelo Online
             </a>
@@ -139,9 +107,10 @@ export default function Navbar({ onOpenTestModal }: NavbarProps) {
               href={WHATSAPP_ORDER_URL}
               target="_blank"
               rel="noopener noreferrer"
-              className="w-full py-2.5 rounded-full bg-[#ff6600] text-black font-bold text-sm text-center shadow-lg hover:bg-[#ff771a] transition-colors"
+              onClick={() => setMobileMenuOpen(false)}
+              className="w-full py-3 rounded-xl bg-[#F97316] hover:bg-[#FF8A00] text-[#070606] font-bold text-sm text-center shadow-[0_0_24px_rgba(249,115,22,0.28)] active:scale-[0.98] transition-all cta-shimmer-btn"
             >
-              Pedir Cartão BiositesAi
+              Pedir Cartão BiositesAI
             </a>
           </div>
         </div>

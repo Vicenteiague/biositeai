@@ -9,248 +9,221 @@ import {
   Zap,
   Users,
 } from 'lucide-react';
+import { motion } from 'motion/react';
 import { BIOSITE_TEST_URL } from '../types';
+import Reveal, { CINEMATIC_EASE } from './Reveal';
 
 interface HeroProps {
   onOpenTestModal: () => void;
 }
 
+const bentoPillars = [
+  {
+    icon: LinkIcon,
+    title: 'Mini Site Completo',
+    text: 'Seus links, serviços e produtos reunidos em uma vitrine digital.',
+  },
+  {
+    icon: Bot,
+    title: 'Agente de IA - LIA',
+    text: 'Responde dúvidas na hora e conduz clientes até o fechamento.',
+  },
+  {
+    icon: Clock,
+    title: 'Atendimento 24 Horas',
+    text: 'Sua empresa sempre disponível, mesmo fora do horário comercial.',
+  },
+  {
+    icon: TrendingUp,
+    title: 'Mais Vendas',
+    text: 'Transforme cada visita em uma oportunidade real de negócio.',
+  },
+];
+
+const trustItems = [
+  { icon: Sparkles, title: 'Simples de Usar', subtitle: 'Pronto em minutos' },
+  { icon: ShieldCheck, title: 'Seguro e Confiável', subtitle: 'Dados protegidos' },
+  { icon: Zap, title: 'Moderno e Eficiente', subtitle: 'Respostas imediatas' },
+  { icon: Users, title: 'Ideal para Negócios', subtitle: 'Qualquer segmento' },
+];
+
 export default function Hero({ onOpenTestModal }: HeroProps) {
   return (
-    <section className="relative pt-6 pb-16 md:pt-10 md:pb-24 px-4 overflow-hidden bg-[#080808]">
-      {/* Background ambient lighting in black & subtle orange */}
-      <div className="absolute top-1/4 left-1/3 -translate-x-1/2 -translate-y-1/2 w-[550px] h-[550px] bg-[#FF6A00]/10 blur-[140px] rounded-full pointer-events-none -z-10" />
-      <div className="absolute top-1/3 right-10 w-[450px] h-[450px] bg-[#FF8A00]/12 blur-[150px] rounded-full pointer-events-none -z-10" />
-
-      {/* Subtle tech background grid pattern */}
+    <section className="relative pt-7 pb-16 sm:pt-10 md:pt-14 md:pb-24 px-4 sm:px-6 overflow-hidden bg-[#070606]">
+      {/* Ambient Radial Amber Glow behind Hero */}
       <div
-        className="absolute inset-0 opacity-[0.03] pointer-events-none -z-10"
-        style={{
-          backgroundImage: `radial-gradient(rgba(255, 106, 0, 0.4) 1px, transparent 1px)`,
-          backgroundSize: '24px 24px',
-        }}
+        aria-hidden="true"
+        className="absolute -top-24 left-1/4 -translate-x-1/2 w-[520px] h-[520px] bg-[#F97316] opacity-20 blur-[120px] rounded-full pointer-events-none"
+      />
+      <div
+        aria-hidden="true"
+        className="absolute top-1/3 right-0 w-[440px] h-[440px] bg-[#F97316] opacity-15 blur-[120px] rounded-full pointer-events-none"
       />
 
       <div className="relative container mx-auto max-w-6xl">
-        {/* Main 2-column split */}
-        <div className="grid lg:grid-cols-[1.12fr_0.88fr] gap-10 lg:gap-12 items-center">
-          {/* Left Column: Message & CRO Conversion */}
-          <div className="flex flex-col items-start text-left pr-0 lg:pr-2">
-            {/* Top Brand Tagline Lockup with Official Company Logo */}
-            <div className="flex items-center gap-3.5 mb-5">
-              <img
-                src="/assets/biositesai-logo.png"
-                alt="Logo Oficial BiositesAi - LIA Biosites com IA"
-                className="w-12 h-12 sm:w-14 sm:h-14 rounded-full object-cover shadow-[0_0_20px_rgba(255,106,0,0.45)] border border-[#FF6A00]/50 shrink-0"
-              />
-              <div className="flex flex-col justify-center">
-                <span className="font-display text-xl sm:text-2xl font-bold tracking-tight text-white leading-none">
-                  BIOSITES<span className="text-[#FF6A00]">AI</span>
-                </span>
-                <span className="text-[10px] text-[#A1A1AA] uppercase tracking-[0.2em] font-semibold mt-1">
-                  Sua marca, sem limites
-                </span>
-              </div>
+        {/* Main 2-Column Split */}
+        <div className="grid lg:grid-cols-[1.08fr_0.92fr] gap-8 lg:gap-12 items-center">
+          {/* Left Column: High-Conversion First Screen on Mobile */}
+          <motion.div
+            initial={{ opacity: 0, y: 18 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.7, ease: CINEMATIC_EASE }}
+            className="flex flex-col items-start text-left"
+          >
+            {/* JetBrains Mono Kicker Badge */}
+            <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-lg bg-[#110F0E] border border-[rgba(255,138,0,0.22)] shadow-[inset_0_1px_0_rgba(255,255,255,0.06)] mb-5">
+              <Sparkles className="w-3.5 h-3.5 text-[#F97316] shrink-0" />
+              <span className="font-mono-label text-[10px] sm:text-[11px] font-medium uppercase tracking-[0.2em] text-[#F97316]">
+                Mini Site Inteligente + Agente de IA
+              </span>
             </div>
 
-            {/* Visual Badge / Kicker */}
-            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full border border-[#FF6A00]/40 bg-[#FF6A00]/10 text-[#FF6A00] text-[11px] sm:text-xs font-semibold uppercase tracking-wider mb-5">
-              <Sparkles className="w-3.5 h-3.5" />
-              <span>MINI SITE INTELIGENTE + AGENTE DE IA</span>
-            </div>
-
-            {/* Headline Principal */}
-            <h1 className="font-display text-4xl sm:text-5xl lg:text-[3.5rem] font-bold text-white leading-[1.08] tracking-tight mb-2 text-balance">
-              Muito mais que um biosite.
+            {/* High-Impact Editorial Headline */}
+            <h1 className="font-display text-[2.15rem] sm:text-5xl lg:text-[3.45rem] font-bold text-[#F5F5F4] leading-[1.07] tracking-[-0.03em] mb-4 text-balance">
+              Muito mais que um biosite. Sua empresa pronta para vender{' '}
+              <span className="font-serif-editorial italic font-normal text-[#F97316] tracking-normal text-[2.45rem] sm:text-[3.45rem] lg:text-[3.95rem] leading-[1.02]">
+                24 horas por dia.
+              </span>
             </h1>
 
-            {/* Destaque Complementar em Laranja */}
-            <p className="font-display text-2xl sm:text-3xl lg:text-[2.1rem] font-bold text-[#FF6A00] leading-tight mb-5 text-balance">
-              Sua empresa pronta para vender 24 horas por dia.
+            {/* Concise 2-Line Subtitle */}
+            <p className="text-[#A1A1AA] text-[15px] sm:text-lg mb-7 max-w-xl leading-relaxed">
+              Mini site profissional integrado à{' '}
+              <strong className="text-[#F5F5F4] font-semibold">LIA</strong>, sua agente de IA que
+              tira dúvidas na hora e transforma visitantes em vendas.
             </p>
 
-            {/* Subheadline Explicativa */}
-            <p className="text-[#A1A1AA] text-base sm:text-lg mb-8 max-w-xl leading-relaxed">
-              Seu mini site profissional com links, serviços e informações da sua empresa,
-              acompanhado da <strong className="text-white font-semibold">LIA</strong>, sua agente
-              de IA que responde dúvidas, apresenta suas soluções e ajuda a transformar visitantes
-              em oportunidades de venda.
-            </p>
-
-            {/* 4 Feature Pillars Grid (Refined, no slop) */}
-            <div className="grid sm:grid-cols-2 gap-3 mb-8 w-full max-w-xl">
-              <div className="flex items-start gap-3 p-3.5 rounded-xl bg-[#121212]/90 border border-white/5 hover:border-[#FF6A00]/30 transition-all">
-                <div className="w-8 h-8 rounded-lg bg-[#FF6A00]/15 flex items-center justify-center text-[#FF6A00] shrink-0 mt-0.5">
-                  <LinkIcon className="w-4 h-4" />
-                </div>
-                <div>
-                  <h3 className="text-white font-semibold text-xs sm:text-sm">Mini Site Completo</h3>
-                  <p className="text-[#A1A1AA] text-[11px] leading-snug mt-0.5">
-                    Todos os seus links, serviços, produtos e informações em um só lugar.
-                  </p>
-                </div>
-              </div>
-
-              <div className="flex items-start gap-3 p-3.5 rounded-xl bg-[#121212]/90 border border-white/5 hover:border-[#FF6A00]/30 transition-all">
-                <div className="w-8 h-8 rounded-lg bg-[#FF6A00]/15 flex items-center justify-center text-[#FF6A00] shrink-0 mt-0.5">
-                  <Bot className="w-4 h-4" />
-                </div>
-                <div>
-                  <h3 className="text-white font-semibold text-xs sm:text-sm">Agente de IA - LIA</h3>
-                  <p className="text-[#A1A1AA] text-[11px] leading-snug mt-0.5">
-                    Atendimento inteligente, responde dúvidas e ajuda nas vendas.
-                  </p>
-                </div>
-              </div>
-
-              <div className="flex items-start gap-3 p-3.5 rounded-xl bg-[#121212]/90 border border-white/5 hover:border-[#FF6A00]/30 transition-all">
-                <div className="w-8 h-8 rounded-lg bg-[#FF6A00]/15 flex items-center justify-center text-[#FF6A00] shrink-0 mt-0.5">
-                  <Clock className="w-4 h-4" />
-                </div>
-                <div>
-                  <h3 className="text-white font-semibold text-xs sm:text-sm">Atendimento 24 Horas</h3>
-                  <p className="text-[#A1A1AA] text-[11px] leading-snug mt-0.5">
-                    Sua empresa sempre conectada e pronta para atender clientes.
-                  </p>
-                </div>
-              </div>
-
-              <div className="flex items-start gap-3 p-3.5 rounded-xl bg-[#121212]/90 border border-white/5 hover:border-[#FF6A00]/30 transition-all">
-                <div className="w-8 h-8 rounded-lg bg-[#FF6A00]/15 flex items-center justify-center text-[#FF6A00] shrink-0 mt-0.5">
-                  <TrendingUp className="w-4 h-4" />
-                </div>
-                <div>
-                  <h3 className="text-white font-semibold text-xs sm:text-sm">Mais Vendas</h3>
-                  <p className="text-[#A1A1AA] text-[11px] leading-snug mt-0.5">
-                    Transforme visitantes em clientes com uma presença digital ativa.
-                  </p>
-                </div>
-              </div>
-            </div>
-
-            {/* CTA Principal */}
+            {/* Primary High-Conversion CTA with Shimmer & Click Micro-Scale */}
             <div className="w-full sm:w-auto mb-3">
               <a
                 href={BIOSITE_TEST_URL}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="w-full sm:w-auto inline-flex items-center justify-center gap-3 min-h-13 px-8 py-4 rounded-[14px] font-bold text-base text-[#080808] bg-[#FF6A00] hover:bg-[#FF8A00] shadow-[0_0_25px_rgba(255,106,0,0.35)] hover:shadow-[0_0_35px_rgba(255,106,0,0.6)] hover:-translate-y-0.5 active:translate-y-0 transition-all duration-200 cursor-pointer"
+                className="w-full sm:w-auto inline-flex items-center justify-center gap-3 min-h-[54px] px-8 py-4 rounded-[14px] font-bold text-[15px] sm:text-base text-[#070606] bg-[#F97316] hover:bg-[#FF8A00] shadow-[0_12px_36px_rgba(249,115,22,0.32)] hover:shadow-[0_16px_44px_rgba(249,115,22,0.5)] active:scale-[0.98] transition-all duration-200 cursor-pointer cta-shimmer-btn"
               >
                 <span>Teste um modelo agora</span>
                 <ArrowRight className="w-4 h-4 stroke-[2.5]" />
               </a>
             </div>
 
-            {/* Microcopy curta */}
-            <p className="text-xs text-[#A1A1AA] mb-4">
+            {/* Subtle Microcopy */}
+            <p className="text-xs text-[#A1A1AA]/80">
               Conheça na prática como a LIA pode ajudar seu negócio.
             </p>
-          </div>
+          </motion.div>
 
-          {/* Right Column: LIA in Protagonism & Floating UI Cards */}
-          <div className="relative w-full max-w-md lg:max-w-lg mx-auto flex flex-col items-center justify-center">
-            {/* Ambient orange glow behind LIA */}
+          {/* Right Column: Unobstructed LIA Portrait + Bottom Glass Chat Card */}
+          <motion.div
+            initial={{ opacity: 0, y: 22 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.12, ease: CINEMATIC_EASE }}
+            className="relative w-full max-w-[440px] lg:max-w-[490px] mx-auto"
+          >
+            {/* Ambient Radial Amber Glow behind LIA */}
             <div
-              className="absolute inset-4 blur-3xl rounded-full pointer-events-none -z-10"
-              style={{ background: 'radial-gradient(circle, rgba(255,106,0,0.28) 0%, rgba(8,8,8,0) 70%)' }}
+              aria-hidden="true"
+              className="absolute -inset-6 bg-[#F97316] opacity-20 blur-[120px] rounded-full pointer-events-none"
             />
 
-            {/* Floating UI Card 1: LIA Conversation preview */}
-            <div className="absolute top-2 sm:top-6 -left-2 sm:-left-6 z-20 p-3 sm:p-3.5 rounded-2xl bg-[#121212]/92 border border-[#FF6A00]/30 shadow-[0_16px_36px_rgba(0,0,0,0.7)] backdrop-blur-xl max-w-[220px] sm:max-w-[240px] animate-float-slow">
-              <div className="flex items-center gap-2 mb-1.5">
-                <span className="w-2 h-2 rounded-full bg-emerald-400 shadow-[0_0_8px_#34d399]" />
-                <span className="font-bold text-xs text-white">LIA</span>
-                <span className="text-[10px] text-[#FF6A00] font-semibold ml-auto">Agente IA</span>
-              </div>
-              <p className="text-[11px] text-white/90 leading-tight mb-2">
-                "Olá! Como posso ajudar sua empresa hoje?"
-              </p>
-              <div className="flex flex-col gap-1">
-                <button
-                  onClick={onOpenTestModal}
-                  className="text-left text-[10px] bg-white/5 hover:bg-[#FF6A00]/15 hover:text-white border border-white/10 hover:border-[#FF6A00]/40 px-2 py-1 rounded-md text-[#A1A1AA] transition-colors cursor-pointer"
-                >
-                  Quais são os serviços?
-                </button>
-                <button
-                  onClick={onOpenTestModal}
-                  className="text-left text-[10px] bg-white/5 hover:bg-[#FF6A00]/15 hover:text-white border border-white/10 hover:border-[#FF6A00]/40 px-2 py-1 rounded-md text-[#A1A1AA] transition-colors cursor-pointer"
-                >
-                  Quero um orçamento
-                </button>
-              </div>
-            </div>
+            {/* Portrait Frame — LIA's face 100% clear & sharp */}
+            <div className="relative z-10 w-full overflow-hidden rounded-[26px] border border-[rgba(255,138,0,0.2)] bg-[#110F0E] shadow-[0_28px_70px_rgba(0,0,0,0.85),inset_0_1px_0_rgba(255,255,255,0.08)]">
+              <div className="relative aspect-[4/5] sm:aspect-[4/4.6] w-full overflow-hidden">
+                <img
+                  src="/assets/lia-hero.png"
+                  alt="LIA - Agente de Inteligência Artificial do BiositesAI"
+                  className="w-full h-full object-cover object-top select-none"
+                  loading="eager"
+                />
 
-            {/* Floating UI Card 2: 24/7 Service Badge */}
-            <div className="absolute bottom-6 sm:bottom-12 -right-2 sm:-right-4 z-20 px-3.5 py-2.5 rounded-xl bg-[#121212]/95 border border-[#FF6A00]/35 shadow-[0_16px_36px_rgba(0,0,0,0.8)] backdrop-blur-md flex items-center gap-2.5">
-              <div className="w-8 h-8 rounded-lg bg-[#FF6A00]/15 flex items-center justify-center text-[#FF6A00] shrink-0">
-                <Clock className="w-4 h-4" />
-              </div>
-              <div>
-                <div className="text-[11px] font-bold text-white flex items-center gap-1.5">
-                  <span>Atendimento 24h</span>
-                  <span className="w-1.5 h-1.5 rounded-full bg-emerald-400" />
+                {/* Soft dark scrim strictly on the bottom third */}
+                <div
+                  aria-hidden="true"
+                  className="absolute inset-x-0 bottom-0 h-[44%] bg-gradient-to-t from-[#070606] via-[#070606]/70 to-transparent pointer-events-none"
+                />
+
+                {/* Glassmorphic Chat Card anchored at the bottom — never covers face or eyes */}
+                <div className="absolute inset-x-3 bottom-3 sm:inset-x-4 sm:bottom-4 z-20 rounded-2xl bg-[#110F0E]/82 backdrop-blur-xl border border-[rgba(255,138,0,0.22)] shadow-[inset_0_1px_0_rgba(255,255,255,0.08),0_16px_40px_rgba(0,0,0,0.65)] p-3.5 sm:p-4">
+                  <div className="flex items-center justify-between gap-2 mb-2">
+                    <div className="flex items-center gap-2">
+                      <span className="font-display font-bold text-xs sm:text-sm text-[#F5F5F4]">
+                        LIA
+                      </span>
+                      <span className="font-mono-label text-[10px] uppercase tracking-[0.18em] text-[#F97316]">
+                        Agente IA
+                      </span>
+                    </div>
+                    <span className="inline-flex items-center gap-1.5 px-2 py-0.5 rounded-md bg-[#10B981]/12 border border-[#10B981]/25 text-[10px] font-medium text-[#10B981]">
+                      <span className="w-1.5 h-1.5 rounded-full bg-[#10B981] animate-pulse" />
+                      Online
+                    </span>
+                  </div>
+
+                  <p className="text-xs sm:text-[13px] text-[#F5F5F4]/90 leading-snug mb-2.5">
+                    "Olá! Como posso ajudar sua empresa hoje?"
+                  </p>
+
+                  <div className="grid grid-cols-2 gap-2">
+                    <button
+                      onClick={onOpenTestModal}
+                      className="text-left text-[11px] sm:text-xs bg-white/[0.04] hover:bg-[#F97316]/15 text-[#D4D4D8] hover:text-[#F5F5F4] border border-white/10 hover:border-[rgba(255,138,0,0.4)] px-2.5 py-2 rounded-xl transition-all active:scale-[0.98] cursor-pointer truncate"
+                    >
+                      Quais são os serviços?
+                    </button>
+                    <button
+                      onClick={onOpenTestModal}
+                      className="text-left text-[11px] sm:text-xs bg-white/[0.04] hover:bg-[#F97316]/15 text-[#D4D4D8] hover:text-[#F5F5F4] border border-white/10 hover:border-[rgba(255,138,0,0.4)] px-2.5 py-2 rounded-xl transition-all active:scale-[0.98] cursor-pointer truncate"
+                    >
+                      Quero um orçamento
+                    </button>
+                  </div>
                 </div>
-                <div className="text-[10px] text-[#A1A1AA]">Captura e qualifica clientes</div>
               </div>
             </div>
-
-            {/* Main LIA Render */}
-            <div className="relative z-10 w-full overflow-hidden rounded-3xl border border-[#FF6A00]/20 shadow-[0_25px_60px_rgba(0,0,0,0.8)] group transition-transform duration-500 hover:scale-[1.01]">
-              <img
-                src="/assets/lia-hero.png"
-                alt="LIA - Agente de Inteligência Artificial do BiositesAI com headset tecnológico e uniforme moderno"
-                className="w-full h-auto object-cover select-none"
-                loading="eager"
-              />
-              {/* Subtle bottom vignette to ensure perfect grounding */}
-              <div className="absolute inset-x-0 bottom-0 h-16 bg-gradient-to-t from-[#080808] to-transparent pointer-events-none" />
-            </div>
-          </div>
+          </motion.div>
         </div>
 
-        {/* Bottom Trust Band (Strip) */}
-        <div className="mt-14 pt-8 border-t border-white/5 grid grid-cols-2 md:grid-cols-4 gap-4 sm:gap-6 text-left">
-          <div className="flex items-center gap-3">
-            <div className="w-9 h-9 rounded-lg bg-[#FF6A00]/10 flex items-center justify-center text-[#FF6A00] shrink-0">
-              <Sparkles className="w-4 h-4" />
-            </div>
-            <div>
-              <div className="text-xs font-bold text-white uppercase tracking-wider">Simples de Usar</div>
-              <div className="text-[11px] text-[#A1A1AA]">Pronto em minutos</div>
-            </div>
+        {/* Refined 2x2 Bento Grid (Compact on Mobile & Desktop) */}
+        <Reveal delay={0.08} className="mt-10 sm:mt-14">
+          <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4">
+            {bentoPillars.map(({ icon: Icon, title, text }) => (
+              <div
+                key={title}
+                className="luxury-card luxury-card-hover rounded-2xl p-4 sm:p-5 flex flex-col justify-between gap-3"
+              >
+                <div className="w-9 h-9 rounded-xl bg-[#F97316]/12 border border-[rgba(255,138,0,0.2)] flex items-center justify-center text-[#F97316] shrink-0">
+                  <Icon className="w-4 h-4" />
+                </div>
+                <div>
+                  <h3 className="font-display text-[13px] sm:text-[15px] font-semibold text-[#F5F5F4] leading-snug mb-1">
+                    {title}
+                  </h3>
+                  <p className="text-[#A1A1AA] text-[11px] sm:text-xs leading-relaxed line-clamp-2">
+                    {text}
+                  </p>
+                </div>
+              </div>
+            ))}
           </div>
+        </Reveal>
 
-          <div className="flex items-center gap-3">
-            <div className="w-9 h-9 rounded-lg bg-[#FF6A00]/10 flex items-center justify-center text-[#FF6A00] shrink-0">
-              <ShieldCheck className="w-4 h-4" />
-            </div>
-            <div>
-              <div className="text-xs font-bold text-white uppercase tracking-wider">Seguro e Confiável</div>
-              <div className="text-[11px] text-[#A1A1AA]">Dados protegidos</div>
-            </div>
+        {/* Bottom Trust Strip */}
+        <Reveal delay={0.14} className="mt-10 pt-8 border-t border-white/[0.06]">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 sm:gap-6 text-left">
+            {trustItems.map(({ icon: Icon, title, subtitle }) => (
+              <div key={title} className="flex items-center gap-3">
+                <div className="w-9 h-9 rounded-xl bg-[#110F0E] border border-[rgba(255,138,0,0.16)] flex items-center justify-center text-[#F97316] shrink-0">
+                  <Icon className="w-4 h-4" />
+                </div>
+                <div className="min-w-0">
+                  <div className="font-mono-label text-[10px] sm:text-[11px] font-semibold text-[#F5F5F4] uppercase tracking-[0.14em] truncate">
+                    {title}
+                  </div>
+                  <div className="text-[11px] text-[#A1A1AA] truncate mt-0.5">{subtitle}</div>
+                </div>
+              </div>
+            ))}
           </div>
-
-          <div className="flex items-center gap-3">
-            <div className="w-9 h-9 rounded-lg bg-[#FF6A00]/10 flex items-center justify-center text-[#FF6A00] shrink-0">
-              <Zap className="w-4 h-4" />
-            </div>
-            <div>
-              <div className="text-xs font-bold text-white uppercase tracking-wider">Moderno e Eficiente</div>
-              <div className="text-[11px] text-[#A1A1AA]">Respostas imediatas</div>
-            </div>
-          </div>
-
-          <div className="flex items-center gap-3">
-            <div className="w-9 h-9 rounded-lg bg-[#FF6A00]/10 flex items-center justify-center text-[#FF6A00] shrink-0">
-              <Users className="w-4 h-4" />
-            </div>
-            <div>
-              <div className="text-xs font-bold text-white uppercase tracking-wider">Ideal para Negócios</div>
-              <div className="text-[11px] text-[#A1A1AA]">Qualquer segmento</div>
-            </div>
-          </div>
-        </div>
+        </Reveal>
       </div>
     </section>
   );

@@ -1,76 +1,109 @@
 @import "tailwindcss";
 
 :root {
-  --background: 0 0% 3%;
-  --foreground: 0 0% 97%;
-  --card: 0 0% 7%;
-  --card-foreground: 0 0% 97%;
-  --popover: 0 0% 7%;
-  --popover-foreground: 0 0% 97%;
-  --primary: 24 100% 50%;
-  --primary-glow: 30 100% 60%;
-  --primary-foreground: 0 0% 3%;
-  --secondary: 0 0% 11%;
-  --secondary-foreground: 0 0% 97%;
-  --muted: 0 0% 12%;
-  --muted-foreground: 0 0% 72%;
-  --accent: 24 100% 50%;
-  --accent-foreground: 0 0% 3%;
-  --border: 0 0% 22%;
-  --input: 0 0% 14%;
-  --ring: 24 100% 50%;
-  --radius: 0.75rem;
-  --gradient-gold: linear-gradient(135deg, #FF8A00, #FF6A00);
+  --background: #070606;
+  --surface: #110F0E;
+  --foreground: #F5F5F4;
+  --muted-foreground: #A1A1AA;
+  --accent: #F97316;
+  --accent-bright: #FF8A00;
+  --border-amber: rgba(255, 138, 0, 0.14);
+  --gradient-amber: linear-gradient(135deg, #FF8A00 0%, #F97316 100%);
+  color-scheme: dark;
 }
 
-.light {
-  --background: 0 0% 98%;
-  --foreground: 0 0% 9%;
-  --card: 0 0% 100%;
-  --card-foreground: 0 0% 9%;
-  --secondary: 0 0% 94%;
-  --secondary-foreground: 0 0% 9%;
-  --muted: 0 0% 92%;
-  --muted-foreground: 0 0% 40%;
-  --border: 0 0% 86%;
+html {
+  background-color: #070606;
+  color: #F5F5F4;
+  scroll-behavior: smooth;
 }
 
 body {
-  font-family: 'DM Sans', system-ui, sans-serif;
-  background-color: hsl(var(--background));
-  color: hsl(var(--foreground));
+  font-family: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+  background-color: #070606;
+  color: #F5F5F4;
   overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 .font-display {
-  font-family: 'DM Sans', system-ui, sans-serif;
+  font-family: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
 }
 
-.font-serif {
-  font-family: 'Playfair Display', Georgia, serif;
+.font-serif-editorial {
+  font-family: 'Instrument Serif', Georgia, serif;
 }
 
-.text-gold-gradient {
-  background: var(--gradient-gold);
+.font-mono-label {
+  font-family: 'JetBrains Mono', ui-monospace, SFMono-Regular, monospace;
+}
+
+.text-amber-gradient {
+  background: var(--gradient-amber);
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
 }
 
-.glass-card {
-  background: hsl(var(--card) / 0.85);
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
-  border: 1px solid hsl(var(--border) / 0.7);
-  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.4);
+.luxury-card {
+  background-color: #110F0E;
+  border: 1px solid rgba(255, 138, 0, 0.14);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.06);
+}
+
+.luxury-card-hover {
+  transition: border-color 300ms cubic-bezier(0.22, 1, 0.36, 1),
+    transform 300ms cubic-bezier(0.22, 1, 0.36, 1),
+    background-color 300ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.luxury-card-hover:hover {
+  border-color: rgba(255, 138, 0, 0.32);
+}
+
+/* Shimmer sweep effect for primary CTA */
+@keyframes cta-shimmer {
+  0% {
+    transform: translateX(-140%) skewX(-20deg);
+  }
+  100% {
+    transform: translateX(240%) skewX(-20deg);
+  }
+}
+
+.cta-shimmer-btn {
+  position: relative;
+  overflow: hidden;
+}
+
+.cta-shimmer-btn::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 45%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(255, 255, 255, 0.38) 50%,
+    transparent 100%
+  );
+  transform: translateX(-140%) skewX(-20deg);
+  pointer-events: none;
+}
+
+.cta-shimmer-btn:hover::after {
+  animation: cta-shimmer 0.85s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
 @keyframes whatsapp-pulse {
   0% {
-    box-shadow: 0 0 0 0 rgba(0, 200, 0, 0.7);
+    box-shadow: 0 0 0 0 rgba(0, 200, 83, 0.55);
   }
   70%, 100% {
-    box-shadow: 0 0 0 20px rgba(0, 200, 0, 0);
+    box-shadow: 0 0 0 16px rgba(0, 200, 83, 0);
   }
 }
 
@@ -78,16 +111,12 @@ body {
   animation: whatsapp-pulse 3s infinite;
 }
 
-@keyframes float-slow {
-  0%, 100% {
-    transform: translateY(0);
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
   }
-  50% {
-    transform: translateY(-8px);
+  .animate-whatsapp-pulse,
+  .cta-shimmer-btn:hover::after {
+    animation: none;
   }
 }
-
-.animate-float-slow {
-  animation: float-slow 6s ease-in-out infinite;
-}
-

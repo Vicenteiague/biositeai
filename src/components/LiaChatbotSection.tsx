@@ -1,6 +1,7 @@
 import { useState, useRef, useEffect } from 'react';
-import { Send, Sparkles, MessageCircle, RefreshCw, Bot, CheckCheck } from 'lucide-react';
+import { Send, Sparkles, MessageCircle, RefreshCw, Bot, CheckCheck, Wifi, Battery } from 'lucide-react';
 import { WHATSAPP_ORDER_URL, WHATSAPP_DIRECT_URL } from '../types';
+import Reveal from './Reveal';
 
 interface Message {
   id: string;
@@ -31,7 +32,7 @@ export default function LiaChatbotSection() {
   ];
 
   const scrollToBottom = () => {
-    messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
+    messagesEndRef.current?.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
   };
 
   useEffect(() => {
@@ -55,7 +56,6 @@ export default function LiaChatbotSection() {
     setInputText('');
     setIsTyping(true);
 
-    // Simulate natural AI thinking & response
     setTimeout(() => {
       let reply = '';
       let actionUrl: string | undefined;
@@ -65,13 +65,24 @@ export default function LiaChatbotSection() {
 
       if (lower.includes('serviço') || lower.includes('servicos') || lower.includes('quais')) {
         reply =
-          'O BiositesAi é uma solução completa de networking digital: um Cartão de Visitas Físico de alta tecnologia com aproximação NFC + QR Code exclusivo, conectado ao seu Mini Site Biosite com atendente inteligente como eu (LIA), que apresenta seus dados e captura leads 24h por dia!';
-      } else if (lower.includes('custa') || lower.includes('preço') || lower.includes('preco') || lower.includes('valor')) {
+          'O BiositesAI é uma solução completa de networking digital: um Cartão de Visitas Físico de alta tecnologia com aproximação NFC + QR Code exclusivo, conectado ao seu Mini Site Biosite com atendente inteligente como eu (LIA), que apresenta seus dados e captura leads 24h por dia!';
+      } else if (
+        lower.includes('custa') ||
+        lower.includes('preço') ||
+        lower.includes('preco') ||
+        lower.includes('valor')
+      ) {
         reply =
-          'O investimento é de apenas R$ 197,00 (pagamento único, sem mensalidades!). Já inclui o cartão físico com tecnologia NFC e QR Code, produção do mini site inteligente e Frete Grátis para todo o Brasil!';
+          'Temos duas opções: o plano completo com Agente de IA LIA por R$ 397,00 (+ R$ 49,90/mês de manutenção da IA) ou o modelo Tradicional sem IA por R$ 297,00 (pagamento único, sem mensalidades). Ambos já incluem Cartão NFC, QR Code, Mini Site e Frete Grátis para todo o Brasil!';
         actionUrl = WHATSAPP_ORDER_URL;
-        actionLabel = 'Garantir meu BiositesAi';
-      } else if (lower.includes('alguém') || lower.includes('alguem') || lower.includes('humano') || lower.includes('atendente') || lower.includes('whatsapp')) {
+        actionLabel = 'Garantir meu BiositesAI';
+      } else if (
+        lower.includes('alguém') ||
+        lower.includes('alguem') ||
+        lower.includes('humano') ||
+        lower.includes('atendente') ||
+        lower.includes('whatsapp')
+      ) {
         reply =
           'Com certeza! Nosso time de especialistas está pronto para te atender agora mesmo via WhatsApp. Basta clicar no botão abaixo:';
         actionUrl = WHATSAPP_DIRECT_URL;
@@ -84,7 +95,7 @@ export default function LiaChatbotSection() {
           'O frete é grátis para todo o Brasil! O seu mini site digital fica pronto em poucas horas para você já começar a usar, e o cartão físico personalizado é despachado em poucos dias úteis.';
       } else {
         reply =
-          `Entendi perfeitamente! Como sua assistente virtual no Biosite, eu posso explicar cada detalhe, tirar dúvidas sobre seus serviços e direcionar seus clientes diretamente para fechar negócio com você! Posso te ajudar com mais alguma informação?`;
+          'Entendi perfeitamente! Como sua assistente virtual no BiositesAI, eu posso explicar cada detalhe, tirar dúvidas sobre seus serviços e direcionar seus clientes diretamente para fechar negócio com você! Posso te ajudar com mais alguma informação?';
       }
 
       const liaMsg: Message = {
@@ -98,7 +109,7 @@ export default function LiaChatbotSection() {
 
       setIsTyping(false);
       setMessages((prev) => [...prev, liaMsg]);
-    }, 800);
+    }, 750);
   };
 
   const handleReset = () => {
@@ -113,182 +124,200 @@ export default function LiaChatbotSection() {
   };
 
   return (
-    <section className="py-16 md:py-24 px-4 relative bg-transparent overflow-hidden">
-      {/* Background radial glow */}
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[700px] bg-[#ff6600]/10 blur-[140px] rounded-full pointer-events-none -z-10" />
+    <section className="py-20 md:py-28 px-4 sm:px-6 relative bg-[#070606] overflow-hidden">
+      {/* Soft Radial Amber Halo behind Smartphone */}
+      <div
+        aria-hidden="true"
+        className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[540px] h-[540px] bg-[#F97316] opacity-20 blur-[120px] rounded-full pointer-events-none"
+      />
 
-      <div className="container mx-auto max-w-3xl">
-        {/* Section Headline matching reference screenshot */}
-        <div className="text-center mb-8 sm:mb-10">
-          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full border border-[#ff6600]/30 bg-[#ff6600]/10 text-[#ff6600] text-xs font-semibold uppercase tracking-wider mb-4">
-            <Sparkles className="w-3.5 h-3.5" />
-            <span>A Cereja do Bolo</span>
+      <div className="container mx-auto max-w-4xl relative z-10">
+        {/* Section Header */}
+        <Reveal className="text-center mb-10 sm:mb-14">
+          <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-lg bg-[#110F0E] border border-[rgba(255,138,0,0.22)] shadow-[inset_0_1px_0_rgba(255,255,255,0.06)] mb-5">
+            <Sparkles className="w-3.5 h-3.5 text-[#F97316]" />
+            <span className="font-mono-label text-[10px] sm:text-[11px] font-medium uppercase tracking-[0.2em] text-[#F97316]">
+              Demonstração Interativa
+            </span>
           </div>
-          <h2 className="font-display text-3xl sm:text-4xl md:text-5xl font-bold text-foreground tracking-tight text-balance">
-            Como ficaria no seu BiositeAI
+
+          <h2 className="font-display text-3xl sm:text-4xl md:text-5xl font-bold text-[#F5F5F4] tracking-[-0.025em] text-balance">
+            Como ficaria no seu{' '}
+            <span className="font-serif-editorial italic font-normal text-[#F97316] tracking-normal text-[2.2rem] sm:text-[2.85rem] md:text-[3.4rem]">
+              BiositesAI
+            </span>
           </h2>
-          <p className="text-foreground/70 text-sm sm:text-base mt-2 max-w-xl mx-auto">
-            Veja na prática a experiência do seu próprio assistente virtual inteligente recebendo e convertendo clientes 24 horas por dia.
+
+          <p className="text-[#A1A1AA] text-sm sm:text-base mt-3 max-w-xl mx-auto leading-relaxed">
+            Converse agora com a LIA e experimente o atendimento inteligente que vai receber e
+            converter seus clientes 24 horas por dia.
           </p>
-        </div>
+        </Reveal>
 
-        {/* The Card - Exact replica of the reference screenshot with light/clean card contrast */}
-        <div className="relative mx-auto bg-white text-slate-900 rounded-[28px] sm:rounded-[32px] p-6 sm:p-8 md:p-10 shadow-[0_25px_60px_rgba(0,0,0,0.45)] border border-slate-200/90 transition-all">
-          {/* Card Header */}
-          <div className="flex items-start justify-between gap-4 pb-5 border-b border-slate-100">
-            <div className="flex items-center gap-4 sm:gap-5">
-              {/* LIA Avatar with glowing ring */}
-              <div className="relative shrink-0">
-                <img
-                  src="/assets/lia-avatar.png"
-                  alt="LIA - Assistente Virtual Inteligente"
-                  className="w-16 h-16 sm:w-20 sm:h-20 rounded-full object-cover shadow-md border-2 border-indigo-500/20 ring-4 ring-indigo-50"
-                  loading="lazy"
-                />
-                <span className="absolute bottom-0 right-0 w-4 h-4 rounded-full bg-emerald-500 border-2 border-white" />
-              </div>
-
-              {/* Title & Subtitle */}
-              <div>
-                <div className="flex items-center gap-2">
-                  <h3 className="font-display text-2xl sm:text-3xl font-bold text-slate-900 leading-tight">
-                    Olá! Eu sou a LIA
-                  </h3>
-                  <span className="text-2xl" role="img" aria-label="Aceno">
-                    👋
-                  </span>
+        {/* Dark Luxury Smartphone Mockup */}
+        <Reveal delay={0.1}>
+          <div className="relative mx-auto w-full max-w-[430px] rounded-[40px] p-[6px] bg-gradient-to-b from-white/15 via-[rgba(255,138,0,0.22)] to-white/[0.06] shadow-[0_32px_90px_rgba(0,0,0,0.85)]">
+            <div className="relative rounded-[35px] bg-[#110F0E] overflow-hidden border border-black/80 shadow-[inset_0_1px_0_rgba(255,255,255,0.08)]">
+              {/* Top Phone Status Bar & Dynamic Island */}
+              <div className="px-6 pt-3.5 pb-2.5 flex items-center justify-between text-[11px] font-medium text-[#A1A1AA] bg-[#0B0A09]/90">
+                <span className="tabular-nums">09:41</span>
+                <div className="w-24 h-5 rounded-full bg-black border border-white/[0.06] flex items-center justify-end px-2">
+                  <span className="w-2 h-2 rounded-full bg-[#1a1a1d] ring-1 ring-white/10" />
                 </div>
-                <p className="text-sm sm:text-base text-slate-500 font-normal mt-0.5">
-                  Assistente virtual inteligente
-                </p>
+                <div className="flex items-center gap-1.5">
+                  <Wifi className="w-3.5 h-3.5" />
+                  <Battery className="w-4 h-4" />
+                </div>
               </div>
-            </div>
 
-            {/* Online badge */}
-            <div className="shrink-0">
-              <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-emerald-50 text-emerald-700 text-xs sm:text-sm font-semibold border border-emerald-200/80">
-                <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
-                <span>Online</span>
-              </span>
-            </div>
-          </div>
+              {/* Clean Single-Row LIA Header (No squished wrapping) */}
+              <div className="px-4 sm:px-5 py-3.5 bg-[#0E0C0B] border-y border-[rgba(255,138,0,0.14)] flex items-center justify-between gap-3">
+                <div className="flex items-center gap-3 min-w-0 flex-1">
+                  <div className="relative shrink-0">
+                    <img
+                      src="/assets/lia-avatar.png"
+                      alt="LIA - Assistente Virtual Inteligente"
+                      className="w-11 h-11 rounded-full object-cover border border-[rgba(255,138,0,0.35)] shadow-[0_0_16px_rgba(249,115,22,0.25)]"
+                      loading="lazy"
+                    />
+                    <span className="absolute -bottom-0.5 -right-0.5 w-3 h-3 rounded-full bg-[#10B981] border-2 border-[#0E0C0B]" />
+                  </div>
 
-          {/* Intro greeting text from screenshot */}
-          <div className="py-5 text-slate-800 text-base sm:text-lg leading-relaxed font-normal">
-            Estou aqui para tirar suas dúvidas, apresentar nossos serviços e ajudar você a encontrar a melhor solução. Pode perguntar!
-          </div>
+                  <div className="min-w-0 flex-1">
+                    <h3 className="font-display text-[15px] sm:text-base font-bold text-[#F5F5F4] leading-tight whitespace-nowrap truncate">
+                      Olá! Eu sou a LIA
+                    </h3>
+                    <p className="text-xs text-[#A1A1AA] truncate mt-0.5">
+                      Assistente virtual inteligente
+                    </p>
+                  </div>
+                </div>
 
-          {/* Interactive Chat Stream if messages exist */}
-          {messages.length > 1 && (
-            <div className="mb-5 space-y-3 max-h-80 overflow-y-auto pr-1 border-t border-b border-slate-100 py-4">
-              {messages.slice(1).map((msg) => (
-                <div
-                  key={msg.id}
-                  className={`flex flex-col ${
-                    msg.sender === 'user' ? 'items-end' : 'items-start'
-                  } animate-in fade-in slide-in-from-bottom-1 duration-200`}
-                >
-                  <div
-                    className={`max-w-[88%] rounded-2xl px-4 py-3 text-sm sm:text-base leading-relaxed ${
-                      msg.sender === 'user'
-                        ? 'bg-[#ff6600] text-black font-medium shadow-sm'
-                        : 'bg-slate-100 text-slate-900 border border-slate-200/70 shadow-sm'
-                    }`}
-                  >
-                    <p>{msg.text}</p>
-                    {msg.actionUrl && (
-                      <div className="mt-3 pt-2 border-t border-slate-200">
-                        <a
-                          href={msg.actionUrl}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-slate-900 hover:bg-slate-800 text-white font-semibold text-xs transition-colors shadow-sm"
-                        >
-                          <MessageCircle className="w-3.5 h-3.5 text-[#ff6600]" />
-                          <span>{msg.actionLabel}</span>
-                        </a>
+                {/* Emerald Online Status Badge */}
+                <span className="shrink-0 inline-flex items-center gap-1.5 px-2.5 py-1 rounded-lg bg-[#10B981]/12 text-[#10B981] text-[11px] font-semibold border border-[#10B981]/25 whitespace-nowrap">
+                  <span className="w-1.5 h-1.5 rounded-full bg-[#10B981] animate-pulse" />
+                  <span>Online</span>
+                </span>
+              </div>
+
+              {/* Chat Viewport */}
+              <div className="px-4 sm:px-5 pt-4 pb-5 flex flex-col">
+                {/* Chat Messages Stream */}
+                <div className="space-y-3 max-h-[310px] overflow-y-auto pr-1 mb-4">
+                  {messages.map((msg) => (
+                    <div
+                      key={msg.id}
+                      className={`flex flex-col ${
+                        msg.sender === 'user' ? 'items-end' : 'items-start'
+                      }`}
+                    >
+                      <div
+                        className={`max-w-[88%] rounded-2xl px-3.5 py-2.5 text-[13px] sm:text-sm leading-relaxed ${
+                          msg.sender === 'user'
+                            ? 'bg-[#F97316] text-[#070606] font-medium rounded-br-md'
+                            : 'bg-[#181513] text-[#F5F5F4]/92 border border-[rgba(255,138,0,0.14)] rounded-bl-md shadow-[inset_0_1px_0_rgba(255,255,255,0.04)]'
+                        }`}
+                      >
+                        <p>{msg.text}</p>
+                        {msg.actionUrl && (
+                          <div className="mt-3 pt-2.5 border-t border-white/10">
+                            <a
+                              href={msg.actionUrl}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              className="inline-flex items-center gap-2 px-3.5 py-2 rounded-xl bg-[#F97316] hover:bg-[#FF8A00] text-[#070606] font-bold text-xs transition-colors"
+                            >
+                              <MessageCircle className="w-3.5 h-3.5" />
+                              <span>{msg.actionLabel}</span>
+                            </a>
+                          </div>
+                        )}
                       </div>
+                      <span className="text-[10px] text-[#71717A] mt-1 px-1 flex items-center gap-1">
+                        {msg.time}
+                        {msg.sender === 'user' && (
+                          <CheckCheck className="w-3 h-3 text-[#F97316]" />
+                        )}
+                      </span>
+                    </div>
+                  ))}
+
+                  {isTyping && (
+                    <div className="flex items-center gap-2 text-[#A1A1AA] text-xs py-2 px-3 bg-[#181513] border border-[rgba(255,138,0,0.14)] rounded-xl w-fit">
+                      <Bot className="w-3.5 h-3.5 text-[#F97316]" />
+                      <span>LIA está digitando...</span>
+                    </div>
+                  )}
+                  <div ref={messagesEndRef} />
+                </div>
+
+                {/* Quick Suggestion Prompts */}
+                <div className="bg-[#0B0A09] border border-[rgba(255,138,0,0.12)] rounded-2xl p-3 mb-3.5">
+                  <div className="flex items-center justify-between mb-2">
+                    <span className="font-mono-label text-[10px] uppercase tracking-[0.18em] text-[#A1A1AA]">
+                      Sugestões de perguntas
+                    </span>
+                    {messages.length > 1 && (
+                      <button
+                        onClick={handleReset}
+                        className="text-[11px] text-[#A1A1AA] hover:text-[#F97316] flex items-center gap-1 cursor-pointer transition-colors"
+                        title="Reiniciar conversa"
+                      >
+                        <RefreshCw className="w-3 h-3" />
+                        <span>Limpar</span>
+                      </button>
                     )}
                   </div>
-                  <span className="text-[10px] text-slate-400 mt-1 px-1 flex items-center gap-1">
-                    {msg.time}
-                    {msg.sender === 'user' && <CheckCheck className="w-3 h-3 text-[#ff6600]" />}
+
+                  <div className="flex flex-wrap gap-1.5">
+                    {suggestions.map((suggestion) => (
+                      <button
+                        key={suggestion}
+                        onClick={() => handleSend(suggestion)}
+                        className="px-3 py-1.5 rounded-xl bg-[#181513] hover:bg-[#F97316]/15 border border-white/[0.08] hover:border-[rgba(255,138,0,0.38)] text-[#E4E4E7] hover:text-[#F5F5F4] text-xs font-medium transition-all active:scale-[0.98] cursor-pointer"
+                      >
+                        {suggestion}
+                      </button>
+                    ))}
+                  </div>
+                </div>
+
+                {/* Interactive User Input Field */}
+                <form
+                  onSubmit={(e) => {
+                    e.preventDefault();
+                    handleSend();
+                  }}
+                  className="flex items-center gap-2"
+                >
+                  <input
+                    type="text"
+                    placeholder="Digite sua dúvida para a LIA..."
+                    value={inputText}
+                    onChange={(e) => setInputText(e.target.value)}
+                    className="flex-1 bg-[#0B0A09] border border-white/10 focus:border-[#F97316] rounded-xl px-4 py-2.5 text-sm text-[#F5F5F4] placeholder:text-[#71717A] outline-none transition-colors"
+                  />
+                  <button
+                    type="submit"
+                    disabled={!inputText.trim()}
+                    className="w-10 h-10 rounded-xl bg-[#F97316] hover:bg-[#FF8A00] disabled:opacity-35 disabled:cursor-not-allowed text-[#070606] flex items-center justify-center shrink-0 transition-all active:scale-[0.96] cursor-pointer"
+                    aria-label="Enviar mensagem"
+                  >
+                    <Send className="w-4 h-4" />
+                  </button>
+                </form>
+
+                {/* Smartphone Home Indicator */}
+                <div className="mt-4 pt-3 border-t border-white/[0.05] flex flex-col items-center gap-2.5">
+                  <span className="font-mono-label text-[10px] tracking-[0.14em] uppercase text-[#71717A]">
+                    BiositesAI · Agente Inteligente 24h
                   </span>
+                  <div className="w-28 h-1 rounded-full bg-white/15" />
                 </div>
-              ))}
-
-              {isTyping && (
-                <div className="flex items-center gap-2 text-slate-500 text-xs py-2 px-3 bg-slate-50 rounded-xl w-fit">
-                  <Bot className="w-4 h-4 text-[#ff6600] animate-bounce" />
-                  <span>LIA está digitando...</span>
-                </div>
-              )}
-              <div ref={messagesEndRef} />
-            </div>
-          )}
-
-          {/* Suggestion questions container from screenshot */}
-          <div className="bg-slate-50/90 border border-slate-200/70 rounded-2xl p-4 sm:p-5 mt-2">
-            <div className="flex items-center justify-between mb-3">
-              <span className="text-xs sm:text-sm font-semibold text-slate-600">
-                Sugestões de perguntas
-              </span>
-              {messages.length > 1 && (
-                <button
-                  onClick={handleReset}
-                  className="text-xs text-slate-400 hover:text-slate-700 flex items-center gap-1 cursor-pointer transition-colors"
-                  title="Reiniciar conversa"
-                >
-                  <RefreshCw className="w-3 h-3" />
-                  <span>Limpar</span>
-                </button>
-              )}
-            </div>
-
-            <div className="flex flex-wrap gap-2">
-              {suggestions.map((suggestion) => (
-                <button
-                  key={suggestion}
-                  onClick={() => handleSend(suggestion)}
-                  className="px-3.5 py-2 rounded-full bg-slate-200/80 hover:bg-slate-300 text-slate-800 text-xs sm:text-sm font-medium transition-all active:scale-95 cursor-pointer shadow-xs hover:shadow"
-                >
-                  {suggestion}
-                </button>
-              ))}
+              </div>
             </div>
           </div>
-
-          {/* Interactive User Input Field */}
-          <form
-            onSubmit={(e) => {
-              e.preventDefault();
-              handleSend();
-            }}
-            className="mt-4 flex items-center gap-2"
-          >
-            <input
-              type="text"
-              placeholder="Digite sua dúvida para a LIA..."
-              value={inputText}
-              onChange={(e) => setInputText(e.target.value)}
-              className="flex-1 bg-slate-50 border border-slate-200 focus:border-[#ff6600] focus:bg-white rounded-full px-5 py-3 text-sm text-slate-900 placeholder:text-slate-400 outline-none transition-all shadow-inner"
-            />
-            <button
-              type="submit"
-              disabled={!inputText.trim()}
-              className="w-11 h-11 rounded-full bg-[#ff6600] hover:bg-[#ff771a] disabled:opacity-40 disabled:cursor-not-allowed text-black flex items-center justify-center shrink-0 transition-transform active:scale-95 shadow-md cursor-pointer"
-              aria-label="Enviar mensagem"
-            >
-              <Send className="w-4 h-4" />
-            </button>
-          </form>
-
-          {/* Card footer note */}
-          <div className="mt-4 pt-3 border-t border-slate-100 flex items-center justify-between text-[11px] text-slate-400">
-            <span>Tecnologia BiositesAI · Agente Inteligente 24h</span>
-            <span className="hidden sm:inline">Respostas instantâneas e personalizadas</span>
-          </div>
-        </div>
+        </Reveal>
       </div>
     </section>
   );

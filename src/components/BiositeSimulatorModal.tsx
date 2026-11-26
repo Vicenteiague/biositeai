@@ -27,8 +27,10 @@ export default function BiositeSimulatorModal({ isOpen, onClose }: BiositeSimula
   const [company, setCompany] = useState('Studio Arquitetura & Interiores');
   const [phone, setPhone] = useState('67993174612');
   const [instagram, setInstagram] = useState('@marianasouza.arq');
-  const [bio, setBio] = useState('Projetos residenciais e comerciais com elegância, conforto e tecnologia.');
-  const [themeColor, setThemeColor] = useState('#ff6600');
+  const [bio, setBio] = useState(
+    'Projetos residenciais e comerciais com elegância, conforto e tecnologia.'
+  );
+  const [themeColor, setThemeColor] = useState('#F97316');
   const [nfcTriggered, setNfcTriggered] = useState(false);
   const [activeTab, setActiveTab] = useState<'profile' | 'ai'>('profile');
   const [chatMessages, setChatMessages] = useState<Array<{ role: 'user' | 'bot'; text: string }>>([
@@ -53,17 +55,19 @@ export default function BiositeSimulatorModal({ isOpen, onClose }: BiositeSimula
     setChatMessages((prev) => [...prev, { role: 'user', text: userText }]);
 
     setTimeout(() => {
-      let reply = 'Excelente! Nossa equipe entrará em contato em instantes. Você também pode clicar no botão WhatsApp acima para falar direto conosco!';
+      let reply =
+        'Excelente! Nossa equipe entrará em contato em instantes. Você também pode clicar no botão WhatsApp acima para falar direto conosco!';
       if (/preço|quanto custa|valor|orçamento/i.test(userText)) {
-        reply = 'Nossos orçamentos são personalizados conforme a metragem e escopo do projeto. Posso te enviar nosso catálogo agora mesmo!';
+        reply =
+          'Nossos orçamentos são personalizados conforme a metragem e escopo do projeto. Posso te enviar nosso catálogo agora mesmo!';
       } else if (/horário|endereço|localização/i.test(userText)) {
-        reply = 'Nosso escritório atende de Segunda a Sexta, das 08h às 18h, com atendimento online para todo o Brasil!';
+        reply =
+          'Nosso escritório atende de Segunda a Sexta, das 08h às 18h, com atendimento online para todo o Brasil!';
       }
       setChatMessages((prev) => [...prev, { role: 'bot', text: reply }]);
     }, 600);
   };
 
-  // Generate downloadable .vcf (vCard)
   const downloadVCard = () => {
     const vcard = `BEGIN:VCARD
 VERSION:3.0
@@ -85,37 +89,37 @@ END:VCARD`;
   };
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-4 bg-black/85 backdrop-blur-md animate-in fade-in">
-      <div className="relative w-full max-w-4xl max-h-[92vh] bg-[#0c0c0c] border border-[#ff6600]/40 rounded-3xl shadow-2xl flex flex-col overflow-hidden">
+    <div className="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-4 bg-[#070606]/85 backdrop-blur-md">
+      <div className="relative w-full max-w-4xl max-h-[92vh] bg-[#110F0E] border border-[rgba(255,138,0,0.24)] rounded-3xl shadow-[0_32px_90px_rgba(0,0,0,0.85),inset_0_1px_0_rgba(255,255,255,0.06)] flex flex-col overflow-hidden">
         {/* Header */}
-        <div className="px-6 py-4 border-b border-white/10 flex items-center justify-between bg-white/[0.02]">
-          <div className="flex items-center gap-3">
-            <div className="w-10 h-10 rounded-xl bg-[#ff6600]/15 flex items-center justify-center text-[#ff6600]">
+        <div className="px-5 sm:px-6 py-4 border-b border-white/[0.08] flex items-center justify-between bg-[#0B0A09]/80">
+          <div className="flex items-center gap-3 min-w-0">
+            <div className="w-10 h-10 rounded-xl bg-[#F97316]/12 border border-[rgba(255,138,0,0.22)] flex items-center justify-center text-[#F97316] shrink-0">
               <Sparkles className="w-5 h-5" />
             </div>
-            <div>
-              <h2 className="font-display font-bold text-lg sm:text-xl text-white">
-                Simulador do Mini Site Biosite
+            <div className="min-w-0">
+              <h2 className="font-display font-bold text-base sm:text-lg text-[#F5F5F4] truncate">
+                Simulador do Mini Site BiositesAI
               </h2>
-              <p className="text-xs text-foreground/60">
-                Personalize seus dados e teste a experiência do seu BiositesAi em tempo real
+              <p className="text-xs text-[#A1A1AA] truncate">
+                Personalize seus dados e teste a experiência do seu BiositesAI em tempo real
               </p>
             </div>
           </div>
           <button
             onClick={onClose}
-            className="w-9 h-9 rounded-full bg-white/5 hover:bg-white/10 text-white/70 hover:text-white flex items-center justify-center transition-colors cursor-pointer"
+            className="w-9 h-9 rounded-xl bg-white/[0.05] hover:bg-white/10 text-[#A1A1AA] hover:text-[#F5F5F4] flex items-center justify-center transition-colors cursor-pointer shrink-0 ml-3"
             aria-label="Fechar"
           >
-            <X className="w-5 h-5" />
+            <X className="w-4 h-4" />
           </button>
         </div>
 
-        {/* Body content */}
+        {/* Body Content */}
         <div className="p-4 sm:p-6 overflow-y-auto grid md:grid-cols-2 gap-8 items-start">
           {/* Controls Form */}
           <div className="space-y-4">
-            <div className="flex items-center justify-between bg-[#ff6600]/10 border border-[#ff6600]/30 rounded-xl p-3 text-xs text-[#ff6600]">
+            <div className="flex items-center justify-between bg-[#F97316]/10 border border-[rgba(255,138,0,0.25)] rounded-xl p-3 text-xs text-[#F97316]">
               <span className="font-semibold flex items-center gap-1.5">
                 <Radio className="w-3.5 h-3.5 animate-pulse" />
                 Simulador 100% Interativo
@@ -126,120 +130,120 @@ END:VCARD`;
                 rel="noopener noreferrer"
                 className="hover:underline flex items-center gap-1 font-bold"
               >
-                <span>Plataforma BiositesAi</span>
+                <span>Plataforma BiositesAI</span>
                 <ExternalLink className="w-3 h-3" />
               </a>
             </div>
 
             <div className="grid grid-cols-2 gap-3">
               <div>
-                <label className="block text-xs font-semibold text-foreground/70 mb-1">
-                  Seu Nome
-                </label>
+                <label className="block text-xs font-medium text-[#A1A1AA] mb-1">Seu Nome</label>
                 <input
                   type="text"
                   value={name}
                   onChange={(e) => setName(e.target.value)}
-                  className="w-full bg-white/5 border border-white/15 focus:border-[#ff6600] rounded-xl px-3 py-2 text-sm text-white outline-none"
+                  className="w-full bg-[#070606] border border-white/10 focus:border-[#F97316] rounded-xl px-3 py-2 text-sm text-[#F5F5F4] outline-none"
                 />
               </div>
               <div>
-                <label className="block text-xs font-semibold text-foreground/70 mb-1">
+                <label className="block text-xs font-medium text-[#A1A1AA] mb-1">
                   Cargo / Profissão
                 </label>
                 <input
                   type="text"
                   value={role}
                   onChange={(e) => setRole(e.target.value)}
-                  className="w-full bg-white/5 border border-white/15 focus:border-[#ff6600] rounded-xl px-3 py-2 text-sm text-white outline-none"
+                  className="w-full bg-[#070606] border border-white/10 focus:border-[#F97316] rounded-xl px-3 py-2 text-sm text-[#F5F5F4] outline-none"
                 />
               </div>
             </div>
 
             <div>
-              <label className="block text-xs font-semibold text-foreground/70 mb-1">
+              <label className="block text-xs font-medium text-[#A1A1AA] mb-1">
                 Empresa ou Especialidade
               </label>
               <input
                 type="text"
                 value={company}
                 onChange={(e) => setCompany(e.target.value)}
-                className="w-full bg-white/5 border border-white/15 focus:border-[#ff6600] rounded-xl px-3 py-2 text-sm text-white outline-none"
+                className="w-full bg-[#070606] border border-white/10 focus:border-[#F97316] rounded-xl px-3 py-2 text-sm text-[#F5F5F4] outline-none"
               />
             </div>
 
             <div className="grid grid-cols-2 gap-3">
               <div>
-                <label className="block text-xs font-semibold text-foreground/70 mb-1">
+                <label className="block text-xs font-medium text-[#A1A1AA] mb-1">
                   WhatsApp (apenas números)
                 </label>
                 <input
                   type="text"
                   value={phone}
                   onChange={(e) => setPhone(e.target.value)}
-                  className="w-full bg-white/5 border border-white/15 focus:border-[#ff6600] rounded-xl px-3 py-2 text-sm text-white outline-none"
+                  className="w-full bg-[#070606] border border-white/10 focus:border-[#F97316] rounded-xl px-3 py-2 text-sm text-[#F5F5F4] outline-none"
                 />
               </div>
               <div>
-                <label className="block text-xs font-semibold text-foreground/70 mb-1">
-                  Instagram
-                </label>
+                <label className="block text-xs font-medium text-[#A1A1AA] mb-1">Instagram</label>
                 <input
                   type="text"
                   value={instagram}
                   onChange={(e) => setInstagram(e.target.value)}
-                  className="w-full bg-white/5 border border-white/15 focus:border-[#ff6600] rounded-xl px-3 py-2 text-sm text-white outline-none"
+                  className="w-full bg-[#070606] border border-white/10 focus:border-[#F97316] rounded-xl px-3 py-2 text-sm text-[#F5F5F4] outline-none"
                 />
               </div>
             </div>
 
             <div>
-              <label className="block text-xs font-semibold text-foreground/70 mb-1">
+              <label className="block text-xs font-medium text-[#A1A1AA] mb-1">
                 Apresentação / Bio
               </label>
               <textarea
                 rows={2}
                 value={bio}
                 onChange={(e) => setBio(e.target.value)}
-                className="w-full bg-white/5 border border-white/15 focus:border-[#ff6600] rounded-xl px-3 py-2 text-sm text-white outline-none resize-none"
+                className="w-full bg-[#070606] border border-white/10 focus:border-[#F97316] rounded-xl px-3 py-2 text-sm text-[#F5F5F4] outline-none resize-none"
               />
             </div>
 
             {/* Color Accent Picker */}
             <div>
-              <label className="block text-xs font-semibold text-foreground/70 mb-2">
-                Cor de Destaque do Biosite
+              <label className="block text-xs font-medium text-[#A1A1AA] mb-2">
+                Cor de Destaque do BiositesAI
               </label>
               <div className="flex items-center gap-2.5">
                 {[
-                  { color: '#ff6600', label: 'Laranja Biosites' },
+                  { color: '#F97316', label: 'Âmbar BiositesAI' },
                   { color: '#eab308', label: 'Ouro Dourado' },
-                  { color: '#10b981', label: 'Esmeralda' },
-                  { color: '#06b6d4', label: 'Ciano Cyber' },
+                  { color: '#06b6d4', label: 'Ciano' },
                   { color: '#ec4899', label: 'Magenta' },
+                  { color: '#f5f5f4', label: 'Platina' },
                 ].map((c) => (
                   <button
                     key={c.color}
                     onClick={() => setThemeColor(c.color)}
                     style={{ backgroundColor: c.color }}
                     className={`w-7 h-7 rounded-full transition-transform cursor-pointer flex items-center justify-center ${
-                      themeColor === c.color ? 'ring-2 ring-white scale-110' : 'opacity-80 hover:opacity-100'
+                      themeColor === c.color
+                        ? 'ring-2 ring-white scale-110'
+                        : 'opacity-80 hover:opacity-100'
                     }`}
                     title={c.label}
                   >
-                    {themeColor === c.color && <Check className="w-3.5 h-3.5 text-black stroke-[3]" />}
+                    {themeColor === c.color && (
+                      <Check className="w-3.5 h-3.5 text-[#070606] stroke-[3]" />
+                    )}
                   </button>
                 ))}
               </div>
             </div>
 
-            {/* Test NFC Action button */}
-            <div className="pt-2 flex flex-col gap-2">
+            {/* Test NFC Action Button */}
+            <div className="pt-2 flex flex-col gap-2.5">
               <button
                 onClick={triggerNFC}
-                className="w-full py-2.5 rounded-xl bg-white/10 hover:bg-white/15 border border-white/20 text-white font-semibold text-sm flex items-center justify-center gap-2 transition-all cursor-pointer"
+                className="w-full py-2.5 rounded-xl bg-white/[0.05] hover:bg-white/10 border border-white/15 text-[#F5F5F4] font-semibold text-sm flex items-center justify-center gap-2 transition-all cursor-pointer"
               >
-                <Radio className="w-4 h-4 text-[#ff6600]" />
+                <Radio className="w-4 h-4 text-[#F97316]" />
                 <span>Simular Aproximação NFC do Cartão</span>
               </button>
 
@@ -247,27 +251,26 @@ END:VCARD`;
                 href={WHATSAPP_ORDER_URL}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="w-full py-3 rounded-xl bg-[#ff6600] hover:bg-[#ff771a] text-black font-bold text-sm text-center shadow-lg transition-all cursor-pointer"
+                className="w-full py-3 rounded-xl bg-[#F97316] hover:bg-[#FF8A00] text-[#070606] font-bold text-sm text-center shadow-lg active:scale-[0.98] transition-all cursor-pointer cta-shimmer-btn"
               >
-                Quero Encomendar Meu BiositesAi Físico 💳
+                Quero Encomendar Meu BiositesAI Físico
               </a>
             </div>
           </div>
 
           {/* Smartphone Simulator Preview */}
           <div className="flex flex-col items-center justify-center">
-            {/* Phone casing */}
-            <div className="relative w-[300px] h-[580px] bg-[#111111] border-[5px] border-[#252525] rounded-[42px] shadow-[0_20px_50px_rgba(0,0,0,0.8)] overflow-hidden flex flex-col">
-              {/* Notch / Speaker */}
-              <div className="w-28 h-4 bg-[#252525] rounded-b-xl mx-auto absolute top-0 left-1/2 -translate-x-1/2 z-30" />
+            <div className="relative w-[300px] h-[580px] bg-[#0B0A09] border-[5px] border-[#262220] rounded-[42px] shadow-[0_24px_60px_rgba(0,0,0,0.85)] overflow-hidden flex flex-col">
+              {/* Notch */}
+              <div className="w-24 h-4 bg-[#181513] rounded-b-xl mx-auto absolute top-0 left-1/2 -translate-x-1/2 z-30" />
 
               {/* NFC Sensor Ripple Effect */}
               {nfcTriggered && (
-                <div className="absolute inset-0 z-40 bg-[#ff6600]/25 backdrop-blur-[2px] flex flex-col items-center justify-center animate-in fade-in duration-300">
-                  <div className="w-20 h-20 rounded-full border-4 border-[#ff6600] animate-ping flex items-center justify-center" />
-                  <div className="mt-4 px-4 py-2 bg-black/90 rounded-full border border-[#ff6600] text-xs font-bold text-[#ff6600] shadow-xl flex items-center gap-2">
+                <div className="absolute inset-0 z-40 bg-[#F97316]/25 backdrop-blur-[2px] flex flex-col items-center justify-center">
+                  <div className="w-20 h-20 rounded-full border-4 border-[#F97316] animate-ping flex items-center justify-center" />
+                  <div className="mt-4 px-4 py-2 bg-[#070606]/95 rounded-full border border-[#F97316] text-xs font-bold text-[#F97316] shadow-xl flex items-center gap-2">
                     <Radio className="w-4 h-4" />
-                    <span>BiositesAi NFC Detectado!</span>
+                    <span>BiositesAI NFC Detectado!</span>
                   </div>
                 </div>
               )}
@@ -280,42 +283,39 @@ END:VCARD`;
 
               {/* Mini-site Screen Content */}
               <div className="flex-1 overflow-y-auto px-4 py-3 text-center flex flex-col items-center">
-                {/* Avatar with live initials */}
                 <div
-                  className="w-18 h-18 rounded-full border-2 p-1 mb-3 shadow-lg flex items-center justify-center text-xl font-bold text-white uppercase"
+                  className="w-16 h-16 rounded-full border-2 p-1 mb-3 shadow-lg flex items-center justify-center text-lg font-bold text-white uppercase"
                   style={{ borderColor: themeColor, backgroundColor: `${themeColor}22` }}
                 >
-                  {name ? name.slice(0, 2) : 'CC'}
+                  {name ? name.slice(0, 2) : 'BA'}
                 </div>
 
-                <h3 className="font-bold text-white text-base leading-tight">
+                <h3 className="font-bold text-[#F5F5F4] text-base leading-tight">
                   {name || 'Seu Nome'}
                 </h3>
                 <p className="text-xs font-medium mt-0.5" style={{ color: themeColor }}>
                   {role || 'Profissão'}
                 </p>
-                <p className="text-[10px] text-white/60 mb-2">
-                  {company || 'Sua Empresa'}
-                </p>
+                <p className="text-[10px] text-[#A1A1AA] mb-2">{company || 'Sua Empresa'}</p>
 
-                <p className="text-[11px] text-white/70 italic px-2 mb-4 leading-snug line-clamp-2">
+                <p className="text-[11px] text-[#D4D4D8]/80 italic px-2 mb-4 leading-snug line-clamp-2">
                   "{bio}"
                 </p>
 
                 {/* Tabs: Perfil vs IA Vendedora */}
-                <div className="w-full flex rounded-lg bg-white/5 p-0.5 mb-3 text-[11px]">
+                <div className="w-full flex rounded-xl bg-white/[0.05] p-0.5 mb-3 text-[11px]">
                   <button
                     onClick={() => setActiveTab('profile')}
-                    className={`flex-1 py-1 rounded-md font-semibold transition-colors ${
-                      activeTab === 'profile' ? 'bg-white/20 text-white' : 'text-white/60'
+                    className={`flex-1 py-1.5 rounded-lg font-semibold transition-colors cursor-pointer ${
+                      activeTab === 'profile' ? 'bg-white/15 text-white' : 'text-white/60'
                     }`}
                   >
                     Contatos
                   </button>
                   <button
                     onClick={() => setActiveTab('ai')}
-                    className={`flex-1 py-1 rounded-md font-semibold flex items-center justify-center gap-1 transition-colors ${
-                      activeTab === 'ai' ? 'bg-[#ff6600] text-black font-bold' : 'text-white/60'
+                    className={`flex-1 py-1.5 rounded-lg font-semibold flex items-center justify-center gap-1 transition-colors cursor-pointer ${
+                      activeTab === 'ai' ? 'bg-[#F97316] text-[#070606] font-bold' : 'text-white/60'
                     }`}
                   >
                     <Bot className="w-3 h-3" />
@@ -324,63 +324,56 @@ END:VCARD`;
                 </div>
 
                 {activeTab === 'profile' ? (
-                  /* Action Buttons */
                   <div className="w-full space-y-2">
-                    {/* Save Contact Button */}
                     <button
                       onClick={downloadVCard}
-                      className="w-full py-2 px-3 rounded-xl text-black font-bold text-xs flex items-center justify-center gap-2 shadow-md transition-transform active:scale-95"
+                      className="w-full py-2.5 px-3 rounded-xl text-[#070606] font-bold text-xs flex items-center justify-center gap-2 shadow-md transition-transform active:scale-95 cursor-pointer"
                       style={{ backgroundColor: themeColor }}
                     >
                       <Download className="w-3.5 h-3.5" />
                       <span>Salvar Contato na Agenda</span>
                     </button>
 
-                    {/* WhatsApp */}
                     <a
                       href={`https://wa.me/55${phone.replace(/\D/g, '')}`}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="w-full py-2 px-3 rounded-xl bg-[#25D366] text-white font-semibold text-xs flex items-center justify-center gap-2 shadow-sm hover:brightness-105"
+                      className="w-full py-2.5 px-3 rounded-xl bg-[#25D366] text-white font-semibold text-xs flex items-center justify-center gap-2 shadow-sm hover:brightness-105"
                     >
                       <MessageCircle className="w-3.5 h-3.5" />
                       <span>Conversar no WhatsApp</span>
                     </a>
 
-                    {/* Instagram */}
                     <a
                       href={`https://instagram.com/${instagram.replace('@', '')}`}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="w-full py-2 px-3 rounded-xl bg-gradient-to-r from-[#833ab4] via-[#fd1d1d] to-[#fcb045] text-white font-semibold text-xs flex items-center justify-center gap-2 shadow-sm"
+                      className="w-full py-2.5 px-3 rounded-xl bg-gradient-to-r from-[#833ab4] via-[#fd1d1d] to-[#fcb045] text-white font-semibold text-xs flex items-center justify-center gap-2 shadow-sm"
                     >
                       <Instagram className="w-3.5 h-3.5" />
                       <span>Instagram {instagram}</span>
                     </a>
 
-                    {/* Localização / Site */}
-                    <div className="w-full py-2 px-3 rounded-xl bg-white/10 text-white font-semibold text-xs flex items-center justify-center gap-2">
+                    <div className="w-full py-2.5 px-3 rounded-xl bg-white/10 text-white font-semibold text-xs flex items-center justify-center gap-2">
                       <Globe className="w-3.5 h-3.5" />
                       <span>Visitar Site Oficial</span>
                     </div>
 
-                    {/* QR Code footer stamp */}
-                    <div className="pt-2 flex items-center justify-center gap-2 text-[10px] text-white/50">
+                    <div className="pt-2 flex items-center justify-center gap-2 text-[10px] text-[#71717A]">
                       <QrCode className="w-3.5 h-3.5" />
-                      <span>BiositesAi · NFC + QR Code</span>
+                      <span>BiositesAI · NFC + QR Code</span>
                     </div>
                   </div>
                 ) : (
-                  /* AI Seller Chat preview */
-                  <div className="w-full flex-1 flex flex-col justify-between text-left text-xs bg-black/40 rounded-xl p-2 border border-white/10">
+                  <div className="w-full flex-1 flex flex-col justify-between text-left text-xs bg-[#070606] rounded-xl p-2.5 border border-[rgba(255,138,0,0.16)]">
                     <div className="space-y-2 overflow-y-auto max-h-48 pr-1">
                       {chatMessages.map((msg, i) => (
                         <div
                           key={i}
                           className={`p-2 rounded-xl text-[11px] leading-tight ${
                             msg.role === 'user'
-                              ? 'bg-white/20 text-white ml-auto max-w-[85%]'
-                              : 'bg-[#ff6600]/20 border border-[#ff6600]/40 text-white mr-auto max-w-[90%]'
+                              ? 'bg-[#F97316] text-[#070606] font-medium ml-auto max-w-[85%]'
+                              : 'bg-[#181513] border border-[rgba(255,138,0,0.16)] text-[#F5F5F4] mr-auto max-w-[90%]'
                           }`}
                         >
                           {msg.text}
@@ -388,18 +381,19 @@ END:VCARD`;
                       ))}
                     </div>
 
-                    <div className="mt-2 flex items-center gap-1">
+                    <div className="mt-2 flex items-center gap-1.5">
                       <input
                         type="text"
-                        placeholder="Pergunte algo ao vendedor IA..."
+                        placeholder="Pergunte algo à LIA..."
                         value={inputMsg}
                         onChange={(e) => setInputMsg(e.target.value)}
                         onKeyDown={(e) => e.key === 'Enter' && handleSendMessage()}
-                        className="flex-1 bg-white/10 border border-white/15 rounded-lg px-2 py-1 text-[11px] text-white outline-none"
+                        className="flex-1 bg-[#110F0E] border border-white/10 focus:border-[#F97316] rounded-lg px-2.5 py-1.5 text-[11px] text-[#F5F5F4] outline-none"
                       />
                       <button
                         onClick={handleSendMessage}
-                        className="w-7 h-7 rounded-lg bg-[#ff6600] text-black flex items-center justify-center"
+                        className="w-7 h-7 rounded-lg bg-[#F97316] text-[#070606] flex items-center justify-center cursor-pointer"
+                        aria-label="Enviar"
                       >
                         <Send className="w-3 h-3" />
                       </button>
@@ -408,8 +402,8 @@ END:VCARD`;
                 )}
               </div>
             </div>
-            <p className="text-[11px] text-foreground/50 mt-3 flex items-center gap-1.5">
-              <Smartphone className="w-3.5 h-3.5 text-[#ff6600]" />
+            <p className="text-[11px] text-[#A1A1AA] mt-3 flex items-center gap-1.5">
+              <Smartphone className="w-3.5 h-3.5 text-[#F97316]" />
               <span>Abre instantaneamente em qualquer smartphone</span>
             </p>
           </div>

@@ -7,10 +7,10 @@ export default function FloatingWhatsApp() {
       target="_blank"
       rel="noopener noreferrer"
       aria-label="Botão para contato no WhatsApp"
-      className="fixed cursor-pointer w-[52px] h-[52px] bottom-4 right-4 md:w-[60px] md:h-[60px] md:bottom-8 md:right-8 bg-[#00c800] rounded-full z-50 flex items-center justify-center shadow-2xl hover:bg-[#00a800] hover:scale-105 transition-all duration-300 animate-whatsapp-pulse group"
+      className="fixed cursor-pointer w-[52px] h-[52px] bottom-6 right-5 md:w-[58px] md:h-[58px] md:bottom-8 md:right-8 bg-[#00c853] rounded-full z-50 flex items-center justify-center shadow-[0_12px_32px_rgba(0,0,0,0.65)] hover:bg-[#00b248] hover:scale-105 active:scale-95 transition-all duration-300 animate-whatsapp-pulse group border border-white/15"
     >
       <svg
-        className="w-7 h-7 md:w-8 md:h-8 fill-white"
+        className="w-6 h-6 md:w-7 md:h-7 fill-white"
         viewBox="0 0 48.12 47.89"
         fill="none"
         xmlns="http://www.w3.org/2000/svg"
@@ -25,7 +25,7 @@ export default function FloatingWhatsApp() {
         />
       </svg>
       {/* Tooltip on hover */}
-      <span className="absolute right-full mr-3 px-3 py-1.5 bg-black/85 text-white text-xs font-semibold rounded-lg opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none whitespace-nowrap border border-white/10 shadow-lg">
+      <span className="hidden md:block absolute right-full mr-3 px-3 py-1.5 bg-[#110F0E]/95 text-[#F5F5F4] text-xs font-medium rounded-xl opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none whitespace-nowrap border border-[rgba(255,138,0,0.2)] shadow-xl">
         Fale conosco no WhatsApp
       </span>
     </a>
